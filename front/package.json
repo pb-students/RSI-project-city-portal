@@ -1,0 +1,23 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "generate:client": "rest-client-generator --output-file rest-client.ts ../src/main/resources/service.wsdl",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/kit": "^3.4.3",
+    "@szacskesz/wsdl-tsclient": "^1.5.0",
+    "@types/node": "^18",
+    "nuxt": "^3.4.3",
+    "rest-client-generator": "^0.2.8",
+    "wsdl-tsclient": "^1.4.0"
+  },
+  "dependencies": {
+    "soap": "^1.0.0"
+  }
+}
