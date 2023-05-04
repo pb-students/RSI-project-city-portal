@@ -1,7 +1,7 @@
 #!/bin/bash
 
-INSTANCE_NAME=wsdl--main--gf--wvffle
-SERVICE=ImageService
+INSTANCE_NAME=wsdl--main--project-rsi--siwykot41
+SERVICE=CityInformationService
 PACKAGE=net.wvffle.rsi
 
 # Generate server war file

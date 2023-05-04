@@ -13,7 +13,7 @@ import java.io.IOException;
 @MTOM
 @WebService
 @BindingType(value = SOAPBinding.SOAP11HTTP_BINDING)
-public class Image {
+public class CityInformation {
     @WebMethod
     public String hello(String text) {
         return String.format("Hello %s", text);
