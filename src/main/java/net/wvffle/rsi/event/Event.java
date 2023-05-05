@@ -1,4 +1,4 @@
-package net.wvffle.rsi.cityevent;
+package net.wvffle.rsi.event;
 
 import java.util.Date;
 

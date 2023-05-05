@@ -12,6 +12,7 @@ SERVICE=CityInformation
 wsdl_subdomain="wsdl--main--$INSTANCE_NAME--$INSTANCE_OWNER"
 package_dir="$(echo $PACKAGE | sed 's/\./\//g')"
 service_file="./src/main/java/$package_dir/services/$SERVICE.java"
+glassfish_log_file="/glassfish5/glassfish/domains/domain1/logs/server.log"
 
 # Check if service file exists
 if [ ! -f "$service_file" ]; then
@@ -20,13 +21,18 @@ if [ ! -f "$service_file" ]; then
 fi
 
 # Generate server war file
-if ! ./mvnw clean install war:war exec:exec; then
-	echo "Failed to build or deploy war file, check logs for details"
+if ! ./mvnw clean install war:war; then
+	echo "Failed to build war file, check logs for details"
 	exit 1
 fi
-
-# Wait for server to deploy war file
-sleep 0.1
+            
+# Deploy war file
+echo "" > $glassfish_log_file
+if ! /glassfish5/bin/asadmin deploy --force=true --contextroot=RSI --name=RSI target/RSI-*.war; then
+	echo "Failed to deploy war file, check logs for details"
+	code-server $glassfish_log_file
+	exit 1
+fi
 
 # Fetch WSDL file
 wget "https://$wsdl_subdomain.code.wvffle.net/RSI/${SERVICE}Service?wsdl" -O - | sed -E 's#http://'$wsdl_subdomain'.code.wvffle.net:80#https://'$wsdl_subdomain'.code.wvffle.net#g' >src/main/resources/service.wsdl
