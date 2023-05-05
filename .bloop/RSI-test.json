@@ -13,6 +13,7 @@
         "classpath": [
             "/home/coder/workspace/target/test-classes",
             "/home/coder/workspace/target/classes",
+            "/home/coder/.m2/repository/com/itextpdf/itextpdf/5.5.13.3/itextpdf-5.5.13.3.jar",
             "/home/coder/.m2/repository/javax/javaee-endorsed-api/7.0/javaee-endorsed-api-7.0.jar",
             "/home/coder/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.8.2/junit-jupiter-api-5.8.2.jar",
             "/home/coder/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar",
@@ -199,6 +200,22 @@
                             "name": "junit-jupiter-api",
                             "classifier": "sources",
                             "path": "/home/coder/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.8.2/junit-jupiter-api-5.8.2-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.itextpdf",
+                    "name": "itextpdf",
+                    "version": "5.5.13.3",
+                    "artifacts": [
+                        {
+                            "name": "itextpdf",
+                            "path": "/home/coder/.m2/repository/com/itextpdf/itextpdf/5.5.13.3/itextpdf-5.5.13.3.jar"
+                        },
+                        {
+                            "name": "itextpdf",
+                            "classifier": "sources",
+                            "path": "/home/coder/.m2/repository/com/itextpdf/itextpdf/5.5.13.3/itextpdf-5.5.13.3-sources.jar"
                         }
                     ]
                 },

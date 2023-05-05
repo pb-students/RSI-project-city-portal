@@ -17,11 +17,11 @@
     </properties>
 
     <dependencies>
-        <!-- <dependency>
+        <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>itextpdf</artifactId>
             <version>5.5.13.3</version>
-        </dependency> -->
+        </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-endorsed-api</artifactId>
@@ -59,30 +59,6 @@
                 <version>3.2.3</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
-            </plugin>
-            
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.6.0</version>
-                <executions>
-                    <execution>
-                        <id>deploy</id>   
-                        <goals>   
-                            <goal>exec</goal>  
-                        </goals>  
-                    </execution> 
-                </executions> 
-                <configuration>  
-                    <executable>/glassfish5/bin/asadmin</executable>
-                    <arguments>
-                        <argument>deploy</argument>
-                        <argument>--force=true</argument>
-                        <argument>--contextroot=${project.name}</argument>
-                        <argument>--name=${project.name}</argument>
-                        <argument>${project.build.directory}/${project.build.finalName}.war</argument>
-                    </arguments>
                 </configuration>
             </plugin>
         </plugins>

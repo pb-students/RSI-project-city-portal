@@ -4,35 +4,119 @@
 </wsp:Policy>
 <types>
 <xsd:schema>
-<xsd:import namespace="http://services.rsi.wvffle.net/" schemaLocation="https://wsdl--main--project-rsi--siwykot41.code.wvffle.net//RSI/CityInformationService?xsd=1"/>
+<xsd:import namespace="http://services.rsi.wvffle.net/" schemaLocation="https://wsdl--main--project-rsi--siwykot41.code.wvffle.net/RSI/CityInformationService?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="hello">
-<part name="parameters" element="tns:hello"/>
+<message name="modifyEventName">
+<part name="parameters" element="tns:modifyEventName"/>
 </message>
-<message name="helloResponse">
-<part name="parameters" element="tns:helloResponse"/>
+<message name="modifyEventNameResponse">
+<part name="parameters" element="tns:modifyEventNameResponse"/>
 </message>
-<message name="getImage">
-<part name="parameters" element="tns:getImage"/>
+<message name="modifyEventType">
+<part name="parameters" element="tns:modifyEventType"/>
 </message>
-<message name="getImageResponse">
-<part name="parameters" element="tns:getImageResponse"/>
+<message name="modifyEventTypeResponse">
+<part name="parameters" element="tns:modifyEventTypeResponse"/>
+</message>
+<message name="modifyEventDate">
+<part name="parameters" element="tns:modifyEventDate"/>
+</message>
+<message name="modifyEventDateResponse">
+<part name="parameters" element="tns:modifyEventDateResponse"/>
+</message>
+<message name="modifyEventDescription">
+<part name="parameters" element="tns:modifyEventDescription"/>
+</message>
+<message name="modifyEventDescriptionResponse">
+<part name="parameters" element="tns:modifyEventDescriptionResponse"/>
+</message>
+<message name="getEvents">
+<part name="parameters" element="tns:getEvents"/>
+</message>
+<message name="getEventsResponse">
+<part name="parameters" element="tns:getEventsResponse"/>
+</message>
+<message name="getEventInfo">
+<part name="parameters" element="tns:getEventInfo"/>
+</message>
+<message name="getEventInfoResponse">
+<part name="parameters" element="tns:getEventInfoResponse"/>
+</message>
+<message name="getEventsByDay">
+<part name="parameters" element="tns:getEventsByDay"/>
+</message>
+<message name="getEventsByDayResponse">
+<part name="parameters" element="tns:getEventsByDayResponse"/>
+</message>
+<message name="getEventsByWeek">
+<part name="parameters" element="tns:getEventsByWeek"/>
+</message>
+<message name="getEventsByWeekResponse">
+<part name="parameters" element="tns:getEventsByWeekResponse"/>
+</message>
+<message name="generatePdf">
+<part name="parameters" element="tns:generatePdf"/>
+</message>
+<message name="generatePdfResponse">
+<part name="parameters" element="tns:generatePdfResponse"/>
+</message>
+<message name="DocumentException">
+<part name="fault" element="tns:DocumentException"/>
+</message>
+<message name="addEvent">
+<part name="parameters" element="tns:addEvent"/>
+</message>
+<message name="addEventResponse">
+<part name="parameters" element="tns:addEventResponse"/>
 </message>
 <portType name="CityInformation">
-<operation name="hello">
-<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/helloRequest" message="tns:hello"/>
-<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/helloResponse" message="tns:helloResponse"/>
+<operation name="modifyEventName">
+<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyEventNameRequest" message="tns:modifyEventName"/>
+<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyEventNameResponse" message="tns:modifyEventNameResponse"/>
 </operation>
-<operation name="getImage">
-<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/getImageRequest" message="tns:getImage"/>
-<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/getImageResponse" message="tns:getImageResponse"/>
+<operation name="modifyEventType">
+<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyEventTypeRequest" message="tns:modifyEventType"/>
+<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyEventTypeResponse" message="tns:modifyEventTypeResponse"/>
+</operation>
+<operation name="modifyEventDate">
+<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyEventDateRequest" message="tns:modifyEventDate"/>
+<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyEventDateResponse" message="tns:modifyEventDateResponse"/>
+</operation>
+<operation name="modifyEventDescription">
+<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyEventDescriptionRequest" message="tns:modifyEventDescription"/>
+<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyEventDescriptionResponse" message="tns:modifyEventDescriptionResponse"/>
+</operation>
+<operation name="getEvents">
+<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventsRequest" message="tns:getEvents"/>
+<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventsResponse" message="tns:getEventsResponse"/>
+</operation>
+<operation name="getEventInfo">
+<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventInfoRequest" message="tns:getEventInfo"/>
+<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventInfoResponse" message="tns:getEventInfoResponse"/>
+</operation>
+<operation name="getEventsByDay">
+<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventsByDayRequest" message="tns:getEventsByDay"/>
+<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventsByDayResponse" message="tns:getEventsByDayResponse"/>
+</operation>
+<operation name="getEventsByWeek">
+<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventsByWeekRequest" message="tns:getEventsByWeek"/>
+<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventsByWeekResponse" message="tns:getEventsByWeekResponse"/>
+</operation>
+<operation name="generatePdf">
+<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/generatePdfRequest" message="tns:generatePdf"/>
+<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/generatePdfResponse" message="tns:generatePdfResponse"/>
+<fault message="tns:DocumentException" name="DocumentException" wsam:Action="http://services.rsi.wvffle.net/CityInformation/generatePdf/Fault/DocumentException"/>
+</operation>
+<operation name="addEvent">
+<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/addEventRequest" message="tns:addEvent"/>
+<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/addEventResponse" message="tns:addEventResponse"/>
 </operation>
 </portType>
 <binding name="CityInformationPortBinding" type="tns:CityInformation">
 <wsp:PolicyReference URI="#CityInformationPortBinding_MTOM_Policy-CityInformationPortBinding_MTOM_Policy"/>
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="hello">
+<operation name="modifyEventName">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -41,7 +125,82 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="getImage">
+<operation name="modifyEventType">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="modifyEventDate">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="modifyEventDescription">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getEvents">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getEventInfo">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getEventsByDay">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getEventsByWeek">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="generatePdf">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="DocumentException">
+<soap:fault name="DocumentException" use="literal"/>
+</fault>
+</operation>
+<operation name="addEvent">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -53,7 +212,7 @@
 </binding>
 <service name="CityInformationService">
 <port name="CityInformationPort" binding="tns:CityInformationPortBinding">
-<soap:address location="https://wsdl--main--project-rsi--siwykot41.code.wvffle.net//RSI/CityInformationService"/>
+<soap:address location="https://wsdl--main--project-rsi--siwykot41.code.wvffle.net/RSI/CityInformationService"/>
 </port>
 </service>
 </definitions>
