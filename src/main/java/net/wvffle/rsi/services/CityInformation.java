@@ -1,12 +1,9 @@
 package net.wvffle.rsi.services;
 
 import java.io.ByteArrayOutputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -24,198 +21,113 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.dao.DaoManager;
+import com.j256.ormlite.jdbc.JdbcPooledConnectionSource;
+import com.j256.ormlite.table.TableUtils;
 
 import net.wvffle.rsi.event.Event;
-import net.wvffle.rsi.utils.MapWrapper;
 
 @MTOM
 @WebService
 @BindingType(value = SOAPBinding.SOAP11HTTP_BINDING)
 public class CityInformation {
     
-    /**
-     * Static HashMap that stores all events
-     */
-    private static HashMap<String, Event> events;
-    private static Connection connection;
-    private static Statement statement;
+    private static JdbcPooledConnectionSource connectionSource;
+    private static Dao<Event, Long> eventDao;
 
-    /**
-     * Singleton that creates new instance of events if the HashMap is null
-     * @return instance of events
-     */
-    public static HashMap<String, Event> getEventsInstance() {
-        if (events == null) {
-            events = new HashMap<String, Event>();
-        }
-
-        return events;
-    }
-
-    public static Connection createConnection() throws SQLException, ClassNotFoundException {
-        if (connection == null) {
-            // Class.forName("org.sqlite.JDBC"); 
-            // String dbURL = "jdbc:sqlite:/home/coder/workspace/src/main/java/net/wvffle/rsi/database/events.db";
-            // connection = DriverManager.getConnection(dbURL);
-            // statement = connection.createStatement();
-            // statement.executeUpdate("CREATE TABLE IF NOT EXISTS EVENT (NAME STRING, TYPE STRING, DATE DATE, DESCRIPTION STRING)"); 
-        }
-
-        return connection;
-    }
-
-    public static void closeConnection() throws SQLException {
-        if (connection != null) {
-            connection.close();
-            statement = null;
+    public CityInformation() {
+        try {
+            connectionSource = new JdbcPooledConnectionSource("jdbc:sqlite:/home/coder/workspace/database.db");
+            TableUtils.createTableIfNotExists(connectionSource, Event.class);
+            eventDao = DaoManager.createDao(connectionSource, Event.class);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
     /**
-     * Puts new event to the events
+     * Create new event
      * @param name is the name of the event
      * @param type is the type of the event
      * @param date is the date of the event
      * @param description description of the event
-     * @throws SQLException
-     * @throws ClassNotFoundException
+     * @return the new event
      */
     @WebMethod
-    public void addEvent(
+    public Event addEvent(
         @WebParam(name="name")          String name, 
         @WebParam(name="type")          String type, 
-        @WebParam(name="date")          Calendar date, 
+        @WebParam(name="date")          Date date, 
         @WebParam(name="description")   String description
-    ) throws SQLException, ClassNotFoundException {
-        getEventsInstance().put(name, new Event(name, type, date, description));
-        // createConnection();
-        // statement.executeUpdate("INSERT INTO EVENT VALUES('" + name + "', '" + type + "', '" + date + "', '" + description + "')");
-        // closeConnection();
+    ) throws SQLException {
+        Event event = new Event(name, type, date, description);
+        eventDao.create(event);
+        return event;
     }
 
     /**
-     * Modifies name of the event
-     * @param oldName is the key to find the event
-     * @param newName is the new name of the event and its new key
+     * Update an event
+     * @param id is the id of the event
+     * @param name is the name of the event
+     * @param type is the type of the event
+     * @param date is the date of the event
+     * @param description is the description of the event
+     * @return the updated event
      */
     @WebMethod
-    public void modifyEventName(
-        @WebParam(name="oldName") String oldName, 
-        @WebParam(name="newName") String newName
-    ) {
-        Event event = getEventsInstance().get(oldName);
-        event.setName(newName);
-        getEventsInstance().remove(oldName);
-        getEventsInstance().put(newName, event);
+    public Event updateEvent(
+        @WebParam(name="id")            long id, 
+        @WebParam(name="name")          String name, 
+        @WebParam(name="type")          String type, 
+        @WebParam(name="date")          Date date, 
+        @WebParam(name="description")   String description
+    ) throws SQLException {
+        Event event = eventDao.queryForId(id);
 
-        // createConnection();
-        // statement.executeUpdate("INSERT INTO EVENT VALUES("+ name + ", " + type + ", " + date + ", " + description + ")");
-        // closeConnection();
-        // createConnection();
-        // statement.executeUpdate("UPDATE EVENTS SET name =  StudentId = 6;");
-        // closeConnection();
-        }
+        event.setName(name);
+        event.setType(type);
+        event.setDate(date);
+        event.setDescription(description);
+
+        eventDao.update(event);
+
+        return event;
+    }
 
     /**
-     * Modifies type of the event
-     * @param type is the new type of the event
-     * @param name is the key to find the event
+     * Delete an event
+     * @param id is the id of the event
      */
     @WebMethod
-    public void modifyString(
-        @WebParam(name="eventType") String eventType, 
-        @WebParam(name="name")      String name
-    ) {
-        getEventsInstance().get(name).setType(eventType);
+    public void deleteEvent(@WebParam(name="id") long id) throws SQLException {
+        eventDao.deleteById(id);
     }
 
     /**
-     * Modifies date of the event
-     * @param date is the new date of the event
-     * @param name is the key to find the event
+     * Get all events sorted by date
+     * @return all events
      */
     @WebMethod
-    public void modifyEventDate(
-        @WebParam(name="date") Calendar date, 
-        @WebParam(name="name") String name
-    ) {
-        getEventsInstance().get(name).setDate(date);
+    public List<Event> getAllEvents() throws SQLException {
+        return eventDao.queryBuilder().orderBy("date", false).query();
     }
 
     /**
-     * Modifies description of the event
-     * @param description is the new description of the event
-     * @param name is the key to find the event
+     * Get all events for a specific day
      */
     @WebMethod
-    public void modifyEventDescription(
-        @WebParam(name="description")   String description, 
-        @WebParam(name="name")          String name
-        ) {
-        getEventsInstance().get(name).setDescription(description);
+    public List<Event> getEventsForDay(@WebParam(name="date") Date date) throws SQLException {
+        return eventDao.queryBuilder().where().eq("date", date).query();
     }
 
     /**
-     * @return MapWrapper<String, Event> with all events
+     * Get all events for a specific month
      */
-    @WebMethod 
-    public MapWrapper<String, Event> getEvents() {
-        return new MapWrapper<String, Event>(events);
-    }
-    
-    /**
-     * @param name is the key to find the event
-     * @return String information about the specific event
-     */
-    @WebMethod 
-    public String getEventInfo(@WebParam(name="name") String name) {
-        return getEventsInstance().get(name).toString();
-    }
-
-    /**
-     * Get the events from the same day as the date parameter
-     * @param date contains the day of searching events
-     * @return events planned in the same day as the date parameter
-     */
-    @WebMethod 
-    public List<Event> getEventsByDay(@WebParam(name="date") Calendar date) {
-        HashMap<String, Event> events = getEventsInstance();
-
-        List<Event> eventsByDay = new ArrayList<>();
-        for (HashMap.Entry<String, Event> entry : events.entrySet()) {
-            Event value = entry.getValue();
-            Calendar dateEntry =  value.getDate();
-
-            if (dateEntry.get(Calendar.DAY_OF_YEAR) == date.get(Calendar.DAY_OF_YEAR)
-            && dateEntry.get(Calendar.MONTH) == date.get(Calendar.MONTH)
-            && dateEntry.get(Calendar.YEAR) == date.get(Calendar.YEAR)) {
-                eventsByDay.add(value);
-            }
-        }
-
-        return eventsByDay;
-    }
-
-    /**
-     * Get the events from the same week as the date parameter
-     * @param date contains the week of searching events
-     * @return events planned in the same week as the date parameter
-     */
-    @WebMethod 
-    public List<Event> getEventsByWeek(@WebParam(name="date") Calendar date) {
-        HashMap<String, Event> events = getEventsInstance();
-
-        List<Event> eventsByWeek = new ArrayList<>();
-        for (HashMap.Entry<String, Event> entry : events.entrySet()) {
-            Event value = entry.getValue();
-            Calendar dateEntry = value.getDate();
-
-            if (dateEntry.get(Calendar.WEEK_OF_YEAR) == date.get(Calendar.WEEK_OF_YEAR)) {
-                eventsByWeek.add(value);
-            }
-        }
-
-        return eventsByWeek;
+    @WebMethod
+    public List<Event> getEventsForMonth(@WebParam(name="date") Date date) throws SQLException {
+        // TODO (siwykot41): Dodaj logike, uzywamy ORMLite
+        return eventDao.queryBuilder().query();
     }
 
     /**
@@ -250,13 +162,15 @@ public class CityInformation {
     }
 
     private void addRows(PdfPTable table) {
-        HashMap<String, Event> events = getEventsInstance();
-        for (HashMap.Entry<String, Event> entry : events.entrySet()) {
-            Calendar date = entry.getValue().getDate();
-            table.addCell(entry.getValue().getName());
-            table.addCell(entry.getValue().getType() + "");
-            table.addCell(date.getTime() + "");
-            table.addCell(entry.getValue().getDescription());
+        try {
+            for (Event event : getAllEvents()) {
+                table.addCell(event.getName());
+                table.addCell(event.getType());
+                table.addCell(event.getDate().toString());
+                table.addCell(event.getDescription());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 

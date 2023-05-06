@@ -20,6 +20,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *       &lt;sequence>
  *         &lt;element name="date" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
@@ -34,6 +35,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlType(name = "event", propOrder = {
     "date",
     "description",
+    "id",
     "name",
     "type"
 })
@@ -42,6 +44,7 @@ public class Event {
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar date;
     protected String description;
+    protected long id;
     protected String name;
     protected String type;
 
@@ -91,6 +94,22 @@ public class Event {
      */
     public void setDescription(String value) {
         this.description = value;
+    }
+
+    /**
+     * Gets the value of the id property.
+     * 
+     */
+    public long getId() {
+        return id;
+    }
+
+    /**
+     * Sets the value of the id property.
+     * 
+     */
+    public void setId(long value) {
+        this.id = value;
     }
 
     /**
