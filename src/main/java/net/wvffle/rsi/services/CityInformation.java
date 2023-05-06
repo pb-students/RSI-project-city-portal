@@ -3,7 +3,6 @@ package net.wvffle.rsi.services;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
@@ -60,7 +59,7 @@ public class CityInformation {
     public void addEvent(
         @WebParam(name="name")          String name, 
         @WebParam(name="type")          EventType type, 
-        @WebParam(name="date")          Date date, 
+        @WebParam(name="date")          Calendar date, 
         @WebParam(name="description")   String description
     ) {
         getEventsInstance().put(name, new Event(name, type, date, description));
@@ -102,7 +101,7 @@ public class CityInformation {
      */
     @WebMethod
     public void modifyEventDate(
-        @WebParam(name="date") Date date, 
+        @WebParam(name="date") Calendar date, 
         @WebParam(name="name") String name
     ) {
         getEventsInstance().get(name).setDate(date);
@@ -139,24 +138,22 @@ public class CityInformation {
     }
 
     /**
-     * @param date contains the day of the event and allows to find the events with the same day of the event
+     * Get the events from the same day as the date parameter
+     * @param date contains the day of searching events
      * @return events planned in the same day as the date parameter
      */
     @WebMethod 
-    public List<Event> getEventsByDay(@WebParam(name="date") Date date) {
-        Calendar calendar = new GregorianCalendar();
-        calendar.setTime(date);
+    public List<Event> getEventsByDay(@WebParam(name="date") Calendar date) {
         HashMap<String, Event> events = getEventsInstance();
 
         List<Event> eventsByDay = new ArrayList<>();
         for (HashMap.Entry<String, Event> entry : events.entrySet()) {
             Event value = entry.getValue();
-            Calendar calendarEntry = new GregorianCalendar();
-            calendarEntry.setTime(value.getDate());
+            Calendar dateEntry =  value.getDate();
 
-            if (calendarEntry.get(Calendar.DAY_OF_YEAR) == calendar.get(Calendar.DAY_OF_YEAR)
-            && calendarEntry.get(Calendar.MONTH) == calendar.get(Calendar.MONTH)
-            && calendarEntry.get(Calendar.YEAR) == calendar.get(Calendar.YEAR)) {
+            if (dateEntry.get(Calendar.DAY_OF_YEAR) == date.get(Calendar.DAY_OF_YEAR)
+            && dateEntry.get(Calendar.MONTH) == date.get(Calendar.MONTH)
+            && dateEntry.get(Calendar.YEAR) == date.get(Calendar.YEAR)) {
                 eventsByDay.add(value);
             }
         }
@@ -164,24 +161,21 @@ public class CityInformation {
         return eventsByDay;
     }
 
-
     /**
-     * @param date contains the week of the event and allows to find the events in the same week of the event
-     * @return events planned in the same week as the date parameter 
+     * Get the events from the same week as the date parameter
+     * @param date contains the week of searching events
+     * @return events planned in the same week as the date parameter
      */
     @WebMethod 
-    public List<Event> getEventsByWeek(@WebParam(name="date") Date date) {
-        Calendar calendar = new GregorianCalendar();
-        calendar.setTime(date);
+    public List<Event> getEventsByWeek(@WebParam(name="date") Calendar date) {
         HashMap<String, Event> events = getEventsInstance();
 
         List<Event> eventsByWeek = new ArrayList<>();
         for (HashMap.Entry<String, Event> entry : events.entrySet()) {
             Event value = entry.getValue();
-            Calendar calendarEntry = new GregorianCalendar();
-            calendarEntry.setTime(value.getDate());
+            Calendar dateEntry = value.getDate();
 
-            if (calendarEntry.get(Calendar.WEEK_OF_YEAR) == calendar.get(Calendar.WEEK_OF_YEAR)) {
+            if (dateEntry.get(Calendar.WEEK_OF_YEAR) == date.get(Calendar.WEEK_OF_YEAR)) {
                 eventsByWeek.add(value);
             }
         }
@@ -189,6 +183,11 @@ public class CityInformation {
         return eventsByWeek;
     }
 
+
+    /**
+     * Generates pdf and inserts all the events into the table 
+     * @return pdf as byte array
+     */
     @WebMethod                                                          
     public byte[] generatePdf() throws DocumentException {
         Document document = new Document();
@@ -196,7 +195,7 @@ public class CityInformation {
         PdfWriter.getInstance(document, baos);
         document.open();
  
-        PdfPTable table = new PdfPTable(5);
+        PdfPTable table = new PdfPTable(4);
         addTableHeader(table);
         addRows(table);
 
@@ -206,7 +205,7 @@ public class CityInformation {
     }
    
     private void addTableHeader(PdfPTable table) {
-        String[] columnTitle = {"Name", "Type", "Date", "Description"};
+        String[] columnTitle = {"Name", "Type", "Calendar", "Description"};
         for (int i = 0; i < columnTitle.length; i++) {
             PdfPCell header = new PdfPCell();
             header.setBackgroundColor(BaseColor.LIGHT_GRAY);
@@ -219,9 +218,10 @@ public class CityInformation {
     private void addRows(PdfPTable table) {
         HashMap<String, Event> events = getEventsInstance();
         for (HashMap.Entry<String, Event> entry : events.entrySet()) {
+            Calendar date = entry.getValue().getDate();
             table.addCell(entry.getValue().getName());
             table.addCell(entry.getValue().getType() + "");
-            table.addCell(entry.getValue().getDate() + "");
+            table.addCell(date.getTime() + "");
             table.addCell(entry.getValue().getDescription());
         }
     }

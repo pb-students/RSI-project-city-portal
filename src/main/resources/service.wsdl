@@ -7,17 +7,17 @@
 <xsd:import namespace="http://services.rsi.wvffle.net/" schemaLocation="https://wsdl--main--project-rsi--siwykot41.code.wvffle.net/RSI/CityInformationService?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="modifyEventName">
-<part name="parameters" element="tns:modifyEventName"/>
+<message name="modifyEventDescription">
+<part name="parameters" element="tns:modifyEventDescription"/>
 </message>
-<message name="modifyEventNameResponse">
-<part name="parameters" element="tns:modifyEventNameResponse"/>
+<message name="modifyEventDescriptionResponse">
+<part name="parameters" element="tns:modifyEventDescriptionResponse"/>
 </message>
-<message name="modifyEventType">
-<part name="parameters" element="tns:modifyEventType"/>
+<message name="getEventInfo">
+<part name="parameters" element="tns:getEventInfo"/>
 </message>
-<message name="modifyEventTypeResponse">
-<part name="parameters" element="tns:modifyEventTypeResponse"/>
+<message name="getEventInfoResponse">
+<part name="parameters" element="tns:getEventInfoResponse"/>
 </message>
 <message name="modifyEventDate">
 <part name="parameters" element="tns:modifyEventDate"/>
@@ -25,23 +25,23 @@
 <message name="modifyEventDateResponse">
 <part name="parameters" element="tns:modifyEventDateResponse"/>
 </message>
-<message name="modifyEventDescription">
-<part name="parameters" element="tns:modifyEventDescription"/>
-</message>
-<message name="modifyEventDescriptionResponse">
-<part name="parameters" element="tns:modifyEventDescriptionResponse"/>
-</message>
 <message name="getEvents">
 <part name="parameters" element="tns:getEvents"/>
 </message>
 <message name="getEventsResponse">
 <part name="parameters" element="tns:getEventsResponse"/>
 </message>
-<message name="getEventInfo">
-<part name="parameters" element="tns:getEventInfo"/>
+<message name="modifyEventType">
+<part name="parameters" element="tns:modifyEventType"/>
 </message>
-<message name="getEventInfoResponse">
-<part name="parameters" element="tns:getEventInfoResponse"/>
+<message name="modifyEventTypeResponse">
+<part name="parameters" element="tns:modifyEventTypeResponse"/>
+</message>
+<message name="modifyEventName">
+<part name="parameters" element="tns:modifyEventName"/>
+</message>
+<message name="modifyEventNameResponse">
+<part name="parameters" element="tns:modifyEventNameResponse"/>
 </message>
 <message name="getEventsByDay">
 <part name="parameters" element="tns:getEventsByDay"/>
@@ -71,29 +71,29 @@
 <part name="parameters" element="tns:addEventResponse"/>
 </message>
 <portType name="CityInformation">
-<operation name="modifyEventName">
-<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyEventNameRequest" message="tns:modifyEventName"/>
-<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyEventNameResponse" message="tns:modifyEventNameResponse"/>
+<operation name="modifyEventDescription">
+<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyEventDescriptionRequest" message="tns:modifyEventDescription"/>
+<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyEventDescriptionResponse" message="tns:modifyEventDescriptionResponse"/>
 </operation>
-<operation name="modifyEventType">
-<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyEventTypeRequest" message="tns:modifyEventType"/>
-<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyEventTypeResponse" message="tns:modifyEventTypeResponse"/>
+<operation name="getEventInfo">
+<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventInfoRequest" message="tns:getEventInfo"/>
+<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventInfoResponse" message="tns:getEventInfoResponse"/>
 </operation>
 <operation name="modifyEventDate">
 <input wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyEventDateRequest" message="tns:modifyEventDate"/>
 <output wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyEventDateResponse" message="tns:modifyEventDateResponse"/>
 </operation>
-<operation name="modifyEventDescription">
-<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyEventDescriptionRequest" message="tns:modifyEventDescription"/>
-<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyEventDescriptionResponse" message="tns:modifyEventDescriptionResponse"/>
-</operation>
 <operation name="getEvents">
 <input wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventsRequest" message="tns:getEvents"/>
 <output wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventsResponse" message="tns:getEventsResponse"/>
 </operation>
-<operation name="getEventInfo">
-<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventInfoRequest" message="tns:getEventInfo"/>
-<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventInfoResponse" message="tns:getEventInfoResponse"/>
+<operation name="modifyEventType">
+<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyEventTypeRequest" message="tns:modifyEventType"/>
+<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyEventTypeResponse" message="tns:modifyEventTypeResponse"/>
+</operation>
+<operation name="modifyEventName">
+<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyEventNameRequest" message="tns:modifyEventName"/>
+<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyEventNameResponse" message="tns:modifyEventNameResponse"/>
 </operation>
 <operation name="getEventsByDay">
 <input wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventsByDayRequest" message="tns:getEventsByDay"/>
@@ -116,7 +116,7 @@
 <binding name="CityInformationPortBinding" type="tns:CityInformation">
 <wsp:PolicyReference URI="#CityInformationPortBinding_MTOM_Policy-CityInformationPortBinding_MTOM_Policy"/>
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="modifyEventName">
+<operation name="modifyEventDescription">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -125,7 +125,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="modifyEventType">
+<operation name="getEventInfo">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -143,15 +143,6 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="modifyEventDescription">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
 <operation name="getEvents">
 <soap:operation soapAction=""/>
 <input>
@@ -161,7 +152,16 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="getEventInfo">
+<operation name="modifyEventType">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="modifyEventName">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
