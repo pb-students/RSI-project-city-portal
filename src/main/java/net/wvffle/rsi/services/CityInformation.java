@@ -54,11 +54,11 @@ public class CityInformation {
 
     public static Connection createConnection() throws SQLException, ClassNotFoundException {
         if (connection == null) {
-            Class.forName("org.sqlite.JDBC"); 
-            String dbURL = "jdbc:sqlite:/home/coder/workspace/src/main/java/net/wvffle/rsi/database/events.db";
-            connection = DriverManager.getConnection(dbURL);
-            statement = connection.createStatement();
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS EVENT (NAME STRING, TYPE STRING, DATE DATE, DESCRIPTION STRING)"); 
+            // Class.forName("org.sqlite.JDBC"); 
+            // String dbURL = "jdbc:sqlite:/home/coder/workspace/src/main/java/net/wvffle/rsi/database/events.db";
+            // connection = DriverManager.getConnection(dbURL);
+            // statement = connection.createStatement();
+            // statement.executeUpdate("CREATE TABLE IF NOT EXISTS EVENT (NAME STRING, TYPE STRING, DATE DATE, DESCRIPTION STRING)"); 
         }
 
         return connection;
@@ -88,9 +88,9 @@ public class CityInformation {
         @WebParam(name="description")   String description
     ) throws SQLException, ClassNotFoundException {
         getEventsInstance().put(name, new Event(name, type, date, description));
-        createConnection();
-        statement.executeUpdate("INSERT INTO EVENT VALUES("+ name + ", " + type + ", " + date + ", " + description + ")");
-        closeConnection();
+        // createConnection();
+        // statement.executeUpdate("INSERT INTO EVENT VALUES('" + name + "', '" + type + "', '" + date + "', '" + description + "')");
+        // closeConnection();
     }
 
     /**
@@ -107,7 +107,14 @@ public class CityInformation {
         event.setName(newName);
         getEventsInstance().remove(oldName);
         getEventsInstance().put(newName, event);
-    }
+
+        // createConnection();
+        // statement.executeUpdate("INSERT INTO EVENT VALUES("+ name + ", " + type + ", " + date + ", " + description + ")");
+        // closeConnection();
+        // createConnection();
+        // statement.executeUpdate("UPDATE EVENTS SET name =  StudentId = 6;");
+        // closeConnection();
+        }
 
     /**
      * Modifies type of the event
