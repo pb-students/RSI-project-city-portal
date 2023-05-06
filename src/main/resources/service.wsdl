@@ -73,6 +73,9 @@
 <message name="SQLException">
 <part name="fault" element="tns:SQLException"/>
 </message>
+<message name="ClassNotFoundException">
+<part name="fault" element="tns:ClassNotFoundException"/>
+</message>
 <portType name="CityInformation">
 <operation name="modifyString">
 <input wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyStringRequest" message="tns:modifyString"/>
@@ -115,6 +118,7 @@
 <input wsam:Action="http://services.rsi.wvffle.net/CityInformation/addEventRequest" message="tns:addEvent"/>
 <output wsam:Action="http://services.rsi.wvffle.net/CityInformation/addEventResponse" message="tns:addEventResponse"/>
 <fault message="tns:SQLException" name="SQLException" wsam:Action="http://services.rsi.wvffle.net/CityInformation/addEvent/Fault/SQLException"/>
+<fault message="tns:ClassNotFoundException" name="ClassNotFoundException" wsam:Action="http://services.rsi.wvffle.net/CityInformation/addEvent/Fault/ClassNotFoundException"/>
 </operation>
 </portType>
 <binding name="CityInformationPortBinding" type="tns:CityInformation">
@@ -214,6 +218,9 @@
 </output>
 <fault name="SQLException">
 <soap:fault name="SQLException" use="literal"/>
+</fault>
+<fault name="ClassNotFoundException">
+<soap:fault name="ClassNotFoundException" use="literal"/>
 </fault>
 </operation>
 </binding>

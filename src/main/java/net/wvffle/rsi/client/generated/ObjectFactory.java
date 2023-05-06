@@ -27,6 +27,7 @@ public class ObjectFactory {
     private final static QName _ModifyEventDescription_QNAME = new QName("http://services.rsi.wvffle.net/", "modifyEventDescription");
     private final static QName _ModifyString_QNAME = new QName("http://services.rsi.wvffle.net/", "modifyString");
     private final static QName _GetEventsResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "getEventsResponse");
+    private final static QName _ClassNotFoundException_QNAME = new QName("http://services.rsi.wvffle.net/", "ClassNotFoundException");
     private final static QName _ModifyEventNameResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "modifyEventNameResponse");
     private final static QName _AddEvent_QNAME = new QName("http://services.rsi.wvffle.net/", "addEvent");
     private final static QName _GetEvents_QNAME = new QName("http://services.rsi.wvffle.net/", "getEvents");
@@ -216,6 +217,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ClassNotFoundException }
+     * 
+     */
+    public ClassNotFoundException createClassNotFoundException() {
+        return new ClassNotFoundException();
+    }
+
+    /**
      * Create an instance of {@link ModifyEventNameResponse }
      * 
      */
@@ -304,6 +313,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "getEventsResponse")
     public JAXBElement<GetEventsResponse> createGetEventsResponse(GetEventsResponse value) {
         return new JAXBElement<GetEventsResponse>(_GetEventsResponse_QNAME, GetEventsResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ClassNotFoundException }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "ClassNotFoundException")
+    public JAXBElement<ClassNotFoundException> createClassNotFoundException(ClassNotFoundException value) {
+        return new JAXBElement<ClassNotFoundException>(_ClassNotFoundException_QNAME, ClassNotFoundException.class, null, value);
     }
 
     /**
