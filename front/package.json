@@ -13,11 +13,18 @@
     "@nuxt/kit": "^3.4.3",
     "@szacskesz/wsdl-tsclient": "^1.5.0",
     "@types/node": "^18",
+    "@unocss/nuxt": "^0.51.8",
+    "@unocss/reset": "^0.51.8",
     "nuxt": "^3.4.3",
     "rest-client-generator": "^0.2.8",
+    "typescript": "^5.0.4",
     "wsdl-tsclient": "^1.4.0"
   },
   "dependencies": {
+    "@fontsource/inter": "^4.5.15",
+    "@fontsource/lato": "^4.5.10",
+    "@headlessui/vue": "^1.7.13",
+    "@heroicons/vue": "^2.0.17",
     "soap": "^1.0.0"
   }
 }
