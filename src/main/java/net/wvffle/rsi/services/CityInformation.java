@@ -52,15 +52,23 @@ public class CityInformation {
         return events;
     }
 
-    public static Connection createConnection() throws SQLException {
+    public static Connection createConnection() throws SQLException, ClassNotFoundException {
         if (connection == null) {
+            Class.forName("org.sqlite.JDBC"); 
             String dbURL = "jdbc:sqlite:/home/coder/workspace/src/main/java/net/wvffle/rsi/database/events.db";
             connection = DriverManager.getConnection(dbURL);
             statement = connection.createStatement();
-
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS EVENT (NAME STRING, TYPE STRING, DATE DATE, DESCRIPTION STRING)"); 
         }
 
         return connection;
+    }
+
+    public static void closeConnection() throws SQLException {
+        if (connection != null) {
+            connection.close();
+            statement = null;
+        }
     }
 
     /**
@@ -70,6 +78,7 @@ public class CityInformation {
      * @param date is the date of the event
      * @param description description of the event
      * @throws SQLException
+     * @throws ClassNotFoundException
      */
     @WebMethod
     public void addEvent(
@@ -77,11 +86,11 @@ public class CityInformation {
         @WebParam(name="type")          String type, 
         @WebParam(name="date")          Calendar date, 
         @WebParam(name="description")   String description
-    ) throws SQLException {
+    ) throws SQLException, ClassNotFoundException {
         getEventsInstance().put(name, new Event(name, type, date, description));
-        Connection connection = createConnection();
-        //TODO: zaraz bedzie tego wiecej
-        
+        createConnection();
+        statement.executeUpdate("INSERT INTO EVENT VALUES("+ name + ", " + type + ", " + date + ", " + description + ")");
+        closeConnection();
     }
 
     /**

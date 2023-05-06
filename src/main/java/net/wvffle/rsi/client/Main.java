@@ -17,17 +17,17 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.soap.MTOMFeature;
 
 
-// import net.wvffle.rsi.client.generated.CityInformation;
-// import net.wvffle.rsi.client.generated.CityInformationService;
-// import net.wvffle.rsi.client.generated.DocumentException_Exception;
-// import net.wvffle.rsi.client.generated.Event;
-// import net.wvffle.rsi.client.generated.EventType;
+import net.wvffle.rsi.client.generated.CityInformation;
+import net.wvffle.rsi.client.generated.CityInformationService;
+import net.wvffle.rsi.client.generated.DocumentException_Exception;
+import net.wvffle.rsi.client.generated.Event;
+import net.wvffle.rsi.client.generated.SQLException_Exception;
 
 
 public class Main {
     private static final String WS_URL = "https://wsdl--main--project-rsi--siwykot41.code.wvffle.net/RSI/CityInformationService?wsdl"; 
 
-    public static void main(String[] args) throws DatatypeConfigurationException  {
+    public static void main(String[] args) throws DatatypeConfigurationException, DocumentException_Exception, SQLException_Exception  {
         // CityInformationService service  = new CityInformationService();
 
         // CityInformation port = service.getCityInformationPort(new MTOMFeature());
@@ -36,15 +36,15 @@ public class Main {
         // //miesiące liczone są od zera
         // calendar.set(2000, 9, 28);
         // XMLGregorianCalendar date = DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar); 
-        // port.addEvent("Darmowa pizza", EventType.PARTY, date, "Targi pracy na pb");
+        // port.addEvent("Darmowa pizza", "Patry", date, "Targi pracy na pb");
 
         // calendar.set(2000, 2, 3);
         // date = DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar); 
-        // port.addEvent("Spotkanie", EventType.PICNIC, date, "Rodzinny festyn na rynku");
+        // port.addEvent("Spotkanie", "Party", date, "Rodzinny festyn na rynku");
 
         // calendar.set(2000, 2, 2);
         // date = DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar); 
-        // port.addEvent("Krzysztof Krawczyk - GWINT", EventType.CONCERT, date, "Koncert Krzysztofa Krawczyka w klubie GWINT");
+        // port.addEvent("Krzysztof Krawczyk - GWINT", "Concert", date, "Koncert Krzysztofa Krawczyka w klubie GWINT");
         
         // printEvents(port.getEventsByWeek(date));
         // printEvents(port.getEventsByDay(date));
@@ -88,25 +88,24 @@ public class Main {
         }
     }
 
-    // public static String eventToString(Event event) {
-    //     return null;
-        // return "Nazwa: " + event.getName() + " Typ: " 
-        // + event.getType() + " Data: " + event.getDate() 
-        // + " Description: " + event.getDescription();
-    // }
+    public static String eventToString(Event event) {
+        return "Nazwa: " + event.getName() + " Typ: " 
+        + event.getType() + " Data: " + event.getDate() 
+        + " Description: " + event.getDescription();
+    }
 
-    // public static void printEvents(List<Event> events) {
-    //     for (int i = 0; i < events.size(); i++) {
-    //         System.out.println(eventToString(events.get(i)));
-    //     }
-    // }
+    public static void printEvents(List<Event> events) {
+        for (int i = 0; i < events.size(); i++) {
+            System.out.println(eventToString(events.get(i)));
+        }
+    }
 
-    // public static List<String> eventToStrings(List<Event> events) {
-    //     List<String> eventsStrings = new ArrayList<String>();
-    //     for (int i = 0; i < events.size(); i++) {
-    //         eventsStrings.add(eventToString(events.get(i)));
-    //     }
+    public static List<String> eventToStrings(List<Event> events) {
+        List<String> eventsStrings = new ArrayList<String>();
+        for (int i = 0; i < events.size(); i++) {
+            eventsStrings.add(eventToString(events.get(i)));
+        }
 
-    //     return eventsStrings;
-    // }
+        return eventsStrings;
+    }
 }

@@ -168,12 +168,14 @@ public interface CityInformation {
      * @param description
      * @param type
      * @throws SQLException_Exception
+     * @throws ClassNotFoundException_Exception
      */
     @WebMethod
     @RequestWrapper(localName = "addEvent", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.AddEvent")
     @ResponseWrapper(localName = "addEventResponse", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.AddEventResponse")
     @Action(input = "http://services.rsi.wvffle.net/CityInformation/addEventRequest", output = "http://services.rsi.wvffle.net/CityInformation/addEventResponse", fault = {
-        @FaultAction(className = SQLException_Exception.class, value = "http://services.rsi.wvffle.net/CityInformation/addEvent/Fault/SQLException")
+        @FaultAction(className = SQLException_Exception.class, value = "http://services.rsi.wvffle.net/CityInformation/addEvent/Fault/SQLException"),
+        @FaultAction(className = ClassNotFoundException_Exception.class, value = "http://services.rsi.wvffle.net/CityInformation/addEvent/Fault/ClassNotFoundException")
     })
     public void addEvent(
         @WebParam(name = "name", targetNamespace = "")
@@ -184,7 +186,7 @@ public interface CityInformation {
         XMLGregorianCalendar date,
         @WebParam(name = "description", targetNamespace = "")
         String description)
-        throws SQLException_Exception
+        throws ClassNotFoundException_Exception, SQLException_Exception
     ;
 
 }
