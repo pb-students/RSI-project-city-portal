@@ -29,31 +29,31 @@ public interface CityInformation {
 
     /**
      * 
-     * @param newName
-     * @param oldName
+     * @param name
+     * @param description
      */
     @WebMethod
-    @RequestWrapper(localName = "modifyEventName", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.ModifyEventName")
-    @ResponseWrapper(localName = "modifyEventNameResponse", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.ModifyEventNameResponse")
-    @Action(input = "http://services.rsi.wvffle.net/CityInformation/modifyEventNameRequest", output = "http://services.rsi.wvffle.net/CityInformation/modifyEventNameResponse")
-    public void modifyEventName(
-        @WebParam(name = "oldName", targetNamespace = "")
-        String oldName,
-        @WebParam(name = "newName", targetNamespace = "")
-        String newName);
+    @RequestWrapper(localName = "modifyEventDescription", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.ModifyEventDescription")
+    @ResponseWrapper(localName = "modifyEventDescriptionResponse", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.ModifyEventDescriptionResponse")
+    @Action(input = "http://services.rsi.wvffle.net/CityInformation/modifyEventDescriptionRequest", output = "http://services.rsi.wvffle.net/CityInformation/modifyEventDescriptionResponse")
+    public void modifyEventDescription(
+        @WebParam(name = "description", targetNamespace = "")
+        String description,
+        @WebParam(name = "name", targetNamespace = "")
+        String name);
 
     /**
      * 
      * @param name
-     * @param eventType
+     * @return
+     *     returns java.lang.String
      */
     @WebMethod
-    @RequestWrapper(localName = "modifyEventType", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.ModifyEventType")
-    @ResponseWrapper(localName = "modifyEventTypeResponse", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.ModifyEventTypeResponse")
-    @Action(input = "http://services.rsi.wvffle.net/CityInformation/modifyEventTypeRequest", output = "http://services.rsi.wvffle.net/CityInformation/modifyEventTypeResponse")
-    public void modifyEventType(
-        @WebParam(name = "eventType", targetNamespace = "")
-        EventType eventType,
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getEventInfo", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.GetEventInfo")
+    @ResponseWrapper(localName = "getEventInfoResponse", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.GetEventInfoResponse")
+    @Action(input = "http://services.rsi.wvffle.net/CityInformation/getEventInfoRequest", output = "http://services.rsi.wvffle.net/CityInformation/getEventInfoResponse")
+    public String getEventInfo(
         @WebParam(name = "name", targetNamespace = "")
         String name);
 
@@ -74,21 +74,6 @@ public interface CityInformation {
 
     /**
      * 
-     * @param name
-     * @param description
-     */
-    @WebMethod
-    @RequestWrapper(localName = "modifyEventDescription", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.ModifyEventDescription")
-    @ResponseWrapper(localName = "modifyEventDescriptionResponse", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.ModifyEventDescriptionResponse")
-    @Action(input = "http://services.rsi.wvffle.net/CityInformation/modifyEventDescriptionRequest", output = "http://services.rsi.wvffle.net/CityInformation/modifyEventDescriptionResponse")
-    public void modifyEventDescription(
-        @WebParam(name = "description", targetNamespace = "")
-        String description,
-        @WebParam(name = "name", targetNamespace = "")
-        String name);
-
-    /**
-     * 
      * @return
      *     returns net.wvffle.rsi.client.generated.MapWrapper
      */
@@ -102,17 +87,32 @@ public interface CityInformation {
     /**
      * 
      * @param name
-     * @return
-     *     returns java.lang.String
+     * @param eventType
      */
     @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getEventInfo", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.GetEventInfo")
-    @ResponseWrapper(localName = "getEventInfoResponse", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.GetEventInfoResponse")
-    @Action(input = "http://services.rsi.wvffle.net/CityInformation/getEventInfoRequest", output = "http://services.rsi.wvffle.net/CityInformation/getEventInfoResponse")
-    public String getEventInfo(
+    @RequestWrapper(localName = "modifyEventType", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.ModifyEventType")
+    @ResponseWrapper(localName = "modifyEventTypeResponse", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.ModifyEventTypeResponse")
+    @Action(input = "http://services.rsi.wvffle.net/CityInformation/modifyEventTypeRequest", output = "http://services.rsi.wvffle.net/CityInformation/modifyEventTypeResponse")
+    public void modifyEventType(
+        @WebParam(name = "eventType", targetNamespace = "")
+        EventType eventType,
         @WebParam(name = "name", targetNamespace = "")
         String name);
+
+    /**
+     * 
+     * @param newName
+     * @param oldName
+     */
+    @WebMethod
+    @RequestWrapper(localName = "modifyEventName", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.ModifyEventName")
+    @ResponseWrapper(localName = "modifyEventNameResponse", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.ModifyEventNameResponse")
+    @Action(input = "http://services.rsi.wvffle.net/CityInformation/modifyEventNameRequest", output = "http://services.rsi.wvffle.net/CityInformation/modifyEventNameResponse")
+    public void modifyEventName(
+        @WebParam(name = "oldName", targetNamespace = "")
+        String oldName,
+        @WebParam(name = "newName", targetNamespace = "")
+        String newName);
 
     /**
      * 
