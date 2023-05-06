@@ -18,7 +18,7 @@
 
     <dependencies>
     <!-- bez tych dwóch dependency client nie startuje -->
-        <dependency>
+        <!-- <dependency>
             <groupId>com.sun.xml.ws</groupId>
             <artifactId>rt</artifactId>
             <version>2.3.2</version>
@@ -28,7 +28,7 @@
             <groupId>com.sun.org.apache.xml.internal</groupId>
             <artifactId>resolver</artifactId>
             <version>20050927</version>
-        </dependency>
+        </dependency> -->
     <!-- Ale za to z nimi wsdl sie nie kompiluje, wiec raz je zakomentowuje a raz odkomentowuje -->
         <dependency>
             <groupId>com.itextpdf</groupId>
@@ -40,7 +40,11 @@
             <artifactId>javaee-endorsed-api</artifactId>
             <version>7.0</version>
         </dependency>
-
+        <dependency>
+          <groupId>org.xerial</groupId>
+          <artifactId>sqlite-jdbc</artifactId>
+          <version>3.41.2.1</version>
+        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>

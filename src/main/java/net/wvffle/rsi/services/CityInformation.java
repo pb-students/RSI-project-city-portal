@@ -1,9 +1,12 @@
 package net.wvffle.rsi.services;
 
 import java.io.ByteArrayOutputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -17,13 +20,12 @@ import javax.xml.ws.soap.SOAPBinding;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.Phrase;
 
 import net.wvffle.rsi.event.Event;
-import net.wvffle.rsi.event.EventType;
 import net.wvffle.rsi.utils.MapWrapper;
 
 @MTOM
@@ -35,6 +37,8 @@ public class CityInformation {
      * Static HashMap that stores all events
      */
     private static HashMap<String, Event> events;
+    private static Connection connection;
+    private static Statement statement;
 
     /**
      * Singleton that creates new instance of events if the HashMap is null
@@ -48,21 +52,36 @@ public class CityInformation {
         return events;
     }
 
+    public static Connection createConnection() throws SQLException {
+        if (connection == null) {
+            String dbURL = "jdbc:sqlite:/home/coder/workspace/src/main/java/net/wvffle/rsi/database/events.db";
+            connection = DriverManager.getConnection(dbURL);
+            statement = connection.createStatement();
+
+        }
+
+        return connection;
+    }
+
     /**
      * Puts new event to the events
      * @param name is the name of the event
      * @param type is the type of the event
      * @param date is the date of the event
      * @param description description of the event
+     * @throws SQLException
      */
     @WebMethod
     public void addEvent(
         @WebParam(name="name")          String name, 
-        @WebParam(name="type")          EventType type, 
+        @WebParam(name="type")          String type, 
         @WebParam(name="date")          Calendar date, 
         @WebParam(name="description")   String description
-    ) {
+    ) throws SQLException {
         getEventsInstance().put(name, new Event(name, type, date, description));
+        Connection connection = createConnection();
+        //TODO: zaraz bedzie tego wiecej
+        
     }
 
     /**
@@ -87,8 +106,8 @@ public class CityInformation {
      * @param name is the key to find the event
      */
     @WebMethod
-    public void modifyEventType(
-        @WebParam(name="eventType") EventType eventType, 
+    public void modifyString(
+        @WebParam(name="eventType") String eventType, 
         @WebParam(name="name")      String name
     ) {
         getEventsInstance().get(name).setType(eventType);
@@ -182,7 +201,6 @@ public class CityInformation {
 
         return eventsByWeek;
     }
-
 
     /**
      * Generates pdf and inserts all the events into the table 

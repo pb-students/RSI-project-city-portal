@@ -17,58 +17,60 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.soap.MTOMFeature;
 
 
-import net.wvffle.rsi.client.generated.CityInformation;
-import net.wvffle.rsi.client.generated.CityInformationService;
-import net.wvffle.rsi.client.generated.DocumentException_Exception;
-import net.wvffle.rsi.client.generated.Event;
-import net.wvffle.rsi.client.generated.EventType;
+// import net.wvffle.rsi.client.generated.CityInformation;
+// import net.wvffle.rsi.client.generated.CityInformationService;
+// import net.wvffle.rsi.client.generated.DocumentException_Exception;
+// import net.wvffle.rsi.client.generated.Event;
+// import net.wvffle.rsi.client.generated.EventType;
 
 
 public class Main {
-    public static void main(String[] args) throws DatatypeConfigurationException, DocumentException_Exception {
-        CityInformationService service  = new CityInformationService();
+    private static final String WS_URL = "https://wsdl--main--project-rsi--siwykot41.code.wvffle.net/RSI/CityInformationService?wsdl"; 
 
-        CityInformation port = service.getCityInformationPort(new MTOMFeature());
-        GregorianCalendar calendar = new GregorianCalendar();
+    public static void main(String[] args) throws DatatypeConfigurationException  {
+        // CityInformationService service  = new CityInformationService();
 
-        //miesiące liczone są od zera
-        calendar.set(2000, 9, 28);
-        XMLGregorianCalendar date = DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar); 
-        port.addEvent("Darmowa pizza", EventType.PARTY, date, "Targi pracy na pb");
+        // CityInformation port = service.getCityInformationPort(new MTOMFeature());
+        // GregorianCalendar calendar = new GregorianCalendar();
 
-        calendar.set(2000, 2, 3);
-        date = DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar); 
-        port.addEvent("Spotkanie", EventType.PICNIC, date, "Rodzinny festyn na rynku");
+        // //miesiące liczone są od zera
+        // calendar.set(2000, 9, 28);
+        // XMLGregorianCalendar date = DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar); 
+        // port.addEvent("Darmowa pizza", EventType.PARTY, date, "Targi pracy na pb");
 
-        calendar.set(2000, 2, 2);
-        date = DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar); 
-        port.addEvent("Krzysztof Krawczyk - GWINT", EventType.CONCERT, date, "Koncert Krzysztofa Krawczyka w klubie GWINT");
+        // calendar.set(2000, 2, 3);
+        // date = DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar); 
+        // port.addEvent("Spotkanie", EventType.PICNIC, date, "Rodzinny festyn na rynku");
+
+        // calendar.set(2000, 2, 2);
+        // date = DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar); 
+        // port.addEvent("Krzysztof Krawczyk - GWINT", EventType.CONCERT, date, "Koncert Krzysztofa Krawczyka w klubie GWINT");
         
-        printEvents(port.getEventsByWeek(date));
-        printEvents(port.getEventsByDay(date));
-        System.out.println("------------");
-        port.modifyEventName("Krzysztof Krawczyk - GWINT", "Filip Rutkowski - GWINT");
-        System.out.println("------------");
-        printEvents(port.getEventsByWeek(date));
+        // printEvents(port.getEventsByWeek(date));
+        // printEvents(port.getEventsByDay(date));
+        // System.out.println("------------");
+        // port.modifyEventName("Krzysztof Krawczyk - GWINT", "Filip Rutkowski - GWINT");
+        // System.out.println("------------");
+        // printEvents(port.getEventsByWeek(date));
 
-        calendar.set(2000, 2, 17);
-        date = DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar); 
-        port.modifyEventDate(date, "Filip Rutkowski - GWINT");
-        System.out.println("------------");
-        printEvents(port.getEventsByWeek(date));
+        // calendar.set(2000, 2, 17);
+        // date = DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar); 
+        // port.modifyEventDate(date, "Filip Rutkowski - GWINT");
+        // System.out.println("------------");
+        // printEvents(port.getEventsByWeek(date));
 
 
-        port.modifyEventDescription("Koncert Filipa na nervach", "Filip Rutkowski - GWINT");
-        System.out.println("------------");
-        printEvents(port.getEventsByWeek(date));
+        // port.modifyEventDescription("Koncert Filipa na nervach", "Filip Rutkowski - GWINT");
+        // System.out.println("------------");
+        // printEvents(port.getEventsByWeek(date));
 
-        port.modifyEventType(EventType.PARTY, "Filip Rutkowski - GWINT");
-        System.out.println("------------");
-        printEvents(port.getEventsByWeek(date));
+        // // port.modifyEventType(EventType.PARTY, "Filip Rutkowski - GWINT");
+        // System.out.println("------------");
+        // printEvents(port.getEventsByWeek(date));
 
-        byte[] pdfBytes = port.generatePdf();
-        savePdf(pdfBytes);
-        System.out.println("cityinformationServer.generatePdf() : Download Successful");
+        // byte[] pdfBytes = port.generatePdf();
+        // savePdf(pdfBytes);
+        // System.out.println("cityinformationServer.generatePdf() : Download Successful");
     }
 
     // Save the imageBytes as pdf file to the local disk
@@ -86,24 +88,25 @@ public class Main {
         }
     }
 
-    public static String eventToString(Event event) {
-        return "Nazwa: " + event.getName() + " Typ: " 
-        + event.getType() + " Data: " + event.getDate() 
-        + " Description: " + event.getDescription();
-    }
+    // public static String eventToString(Event event) {
+    //     return null;
+        // return "Nazwa: " + event.getName() + " Typ: " 
+        // + event.getType() + " Data: " + event.getDate() 
+        // + " Description: " + event.getDescription();
+    // }
 
-    public static void printEvents(List<Event> events) {
-        for (int i = 0; i < events.size(); i++) {
-            System.out.println(eventToString(events.get(i)));
-        }
-    }
+    // public static void printEvents(List<Event> events) {
+    //     for (int i = 0; i < events.size(); i++) {
+    //         System.out.println(eventToString(events.get(i)));
+    //     }
+    // }
 
-    public static List<String> eventToStrings(List<Event> events) {
-        List<String> eventsStrings = new ArrayList<String>();
-        for (int i = 0; i < events.size(); i++) {
-            eventsStrings.add(eventToString(events.get(i)));
-        }
+    // public static List<String> eventToStrings(List<Event> events) {
+    //     List<String> eventsStrings = new ArrayList<String>();
+    //     for (int i = 0; i < events.size(); i++) {
+    //         eventsStrings.add(eventToString(events.get(i)));
+    //     }
 
-        return eventsStrings;
-    }
+    //     return eventsStrings;
+    // }
 }

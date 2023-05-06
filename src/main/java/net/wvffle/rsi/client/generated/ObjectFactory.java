@@ -25,12 +25,12 @@ import javax.xml.namespace.QName;
 public class ObjectFactory {
 
     private final static QName _ModifyEventDescription_QNAME = new QName("http://services.rsi.wvffle.net/", "modifyEventDescription");
+    private final static QName _ModifyString_QNAME = new QName("http://services.rsi.wvffle.net/", "modifyString");
     private final static QName _GetEventsResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "getEventsResponse");
     private final static QName _ModifyEventNameResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "modifyEventNameResponse");
-    private final static QName _ModifyEventType_QNAME = new QName("http://services.rsi.wvffle.net/", "modifyEventType");
-    private final static QName _ModifyEventTypeResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "modifyEventTypeResponse");
     private final static QName _AddEvent_QNAME = new QName("http://services.rsi.wvffle.net/", "addEvent");
     private final static QName _GetEvents_QNAME = new QName("http://services.rsi.wvffle.net/", "getEvents");
+    private final static QName _ModifyStringResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "modifyStringResponse");
     private final static QName _DocumentException_QNAME = new QName("http://services.rsi.wvffle.net/", "DocumentException");
     private final static QName _AddEventResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "addEventResponse");
     private final static QName _GetEventInfo_QNAME = new QName("http://services.rsi.wvffle.net/", "getEventInfo");
@@ -44,6 +44,7 @@ public class ObjectFactory {
     private final static QName _GetEventsByWeek_QNAME = new QName("http://services.rsi.wvffle.net/", "getEventsByWeek");
     private final static QName _GeneratePdf_QNAME = new QName("http://services.rsi.wvffle.net/", "generatePdf");
     private final static QName _ModifyEventDescriptionResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "modifyEventDescriptionResponse");
+    private final static QName _SQLException_QNAME = new QName("http://services.rsi.wvffle.net/", "SQLException");
     private final static QName _GetEventsByWeekResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "getEventsByWeekResponse");
     private final static QName _GeneratePdfResponseReturn_QNAME = new QName("", "return");
 
@@ -76,6 +77,14 @@ public class ObjectFactory {
      */
     public ModifyEventDescriptionResponse createModifyEventDescriptionResponse() {
         return new ModifyEventDescriptionResponse();
+    }
+
+    /**
+     * Create an instance of {@link SQLException }
+     * 
+     */
+    public SQLException createSQLException() {
+        return new SQLException();
     }
 
     /**
@@ -151,19 +160,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ModifyEventType }
+     * Create an instance of {@link ModifyStringResponse }
      * 
      */
-    public ModifyEventType createModifyEventType() {
-        return new ModifyEventType();
-    }
-
-    /**
-     * Create an instance of {@link ModifyEventTypeResponse }
-     * 
-     */
-    public ModifyEventTypeResponse createModifyEventTypeResponse() {
-        return new ModifyEventTypeResponse();
+    public ModifyStringResponse createModifyStringResponse() {
+        return new ModifyStringResponse();
     }
 
     /**
@@ -207,6 +208,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ModifyString }
+     * 
+     */
+    public ModifyString createModifyString() {
+        return new ModifyString();
+    }
+
+    /**
      * Create an instance of {@link ModifyEventNameResponse }
      * 
      */
@@ -223,11 +232,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Exception }
+     * 
+     */
+    public Exception createException() {
+        return new Exception();
+    }
+
+    /**
      * Create an instance of {@link Event }
      * 
      */
     public Event createEvent() {
         return new Event();
+    }
+
+    /**
+     * Create an instance of {@link SqlException }
+     * 
+     */
+    public SqlException createSqlException() {
+        return new SqlException();
     }
 
     /**
@@ -239,12 +264,37 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Throwable }
+     * 
+     */
+    public Throwable createThrowable() {
+        return new Throwable();
+    }
+
+    /**
+     * Create an instance of {@link StackTraceElement }
+     * 
+     */
+    public StackTraceElement createStackTraceElement() {
+        return new StackTraceElement();
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ModifyEventDescription }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "modifyEventDescription")
     public JAXBElement<ModifyEventDescription> createModifyEventDescription(ModifyEventDescription value) {
         return new JAXBElement<ModifyEventDescription>(_ModifyEventDescription_QNAME, ModifyEventDescription.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ModifyString }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "modifyString")
+    public JAXBElement<ModifyString> createModifyString(ModifyString value) {
+        return new JAXBElement<ModifyString>(_ModifyString_QNAME, ModifyString.class, null, value);
     }
 
     /**
@@ -266,24 +316,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ModifyEventType }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "modifyEventType")
-    public JAXBElement<ModifyEventType> createModifyEventType(ModifyEventType value) {
-        return new JAXBElement<ModifyEventType>(_ModifyEventType_QNAME, ModifyEventType.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ModifyEventTypeResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "modifyEventTypeResponse")
-    public JAXBElement<ModifyEventTypeResponse> createModifyEventTypeResponse(ModifyEventTypeResponse value) {
-        return new JAXBElement<ModifyEventTypeResponse>(_ModifyEventTypeResponse_QNAME, ModifyEventTypeResponse.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AddEvent }{@code >}}
      * 
      */
@@ -299,6 +331,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "getEvents")
     public JAXBElement<GetEvents> createGetEvents(GetEvents value) {
         return new JAXBElement<GetEvents>(_GetEvents_QNAME, GetEvents.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ModifyStringResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "modifyStringResponse")
+    public JAXBElement<ModifyStringResponse> createModifyStringResponse(ModifyStringResponse value) {
+        return new JAXBElement<ModifyStringResponse>(_ModifyStringResponse_QNAME, ModifyStringResponse.class, null, value);
     }
 
     /**
@@ -416,6 +457,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "modifyEventDescriptionResponse")
     public JAXBElement<ModifyEventDescriptionResponse> createModifyEventDescriptionResponse(ModifyEventDescriptionResponse value) {
         return new JAXBElement<ModifyEventDescriptionResponse>(_ModifyEventDescriptionResponse_QNAME, ModifyEventDescriptionResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SQLException }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "SQLException")
+    public JAXBElement<SQLException> createSQLException(SQLException value) {
+        return new JAXBElement<SQLException>(_SQLException_QNAME, SQLException.class, null, value);
     }
 
     /**

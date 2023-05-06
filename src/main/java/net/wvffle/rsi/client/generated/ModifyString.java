@@ -3,21 +3,20 @@ package net.wvffle.rsi.client.generated;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for modifyEventType complex type.
+ * <p>Java class for modifyString complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="modifyEventType">
+ * &lt;complexType name="modifyString">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="eventType" type="{http://services.rsi.wvffle.net/}eventType" minOccurs="0"/>
+ *         &lt;element name="eventType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -28,14 +27,13 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "modifyEventType", propOrder = {
+@XmlType(name = "modifyString", propOrder = {
     "eventType",
     "name"
 })
-public class ModifyEventType {
+public class ModifyString {
 
-    @XmlSchemaType(name = "string")
-    protected EventType eventType;
+    protected String eventType;
     protected String name;
 
     /**
@@ -43,10 +41,10 @@ public class ModifyEventType {
      * 
      * @return
      *     possible object is
-     *     {@link EventType }
+     *     {@link String }
      *     
      */
-    public EventType getEventType() {
+    public String getEventType() {
         return eventType;
     }
 
@@ -55,10 +53,10 @@ public class ModifyEventType {
      * 
      * @param value
      *     allowed object is
-     *     {@link EventType }
+     *     {@link String }
      *     
      */
-    public void setEventType(EventType value) {
+    public void setEventType(String value) {
         this.eventType = value;
     }
 
