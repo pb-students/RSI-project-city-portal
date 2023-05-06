@@ -11,7 +11,7 @@ public class Event {
     /**
      * Type of the event
      */
-    private EventType type;
+    private String type;
 
     /**
      * Date of the event
@@ -31,7 +31,7 @@ public class Event {
      * @param date is the date of the event
      * @param description description of the event
      */
-    public Event(String name, EventType type, Calendar date, String description) {
+    public Event(String name, String type, Calendar date, String description) {
         this.name = name;
         this.type = type;
         this.date = date;
@@ -50,7 +50,7 @@ public class Event {
      * Event type getter
      * @return type of the event
      */
-    public EventType getType() {
+    public String getType() {
         return type;
     }
     
@@ -82,7 +82,7 @@ public class Event {
      * Event type setter
      * @param type is the new type of the event
      */
-    public void setType(EventType type) {
+    public void setType(String type) {
             this.type = type;
     }
 

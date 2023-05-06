@@ -12,7 +12,7 @@ import javax.xml.ws.WebFault;
  */
 @WebFault(name = "DocumentException", targetNamespace = "http://services.rsi.wvffle.net/")
 public class DocumentException_Exception
-    extends Exception
+    extends java.lang.Exception
 {
 
     /**
@@ -37,7 +37,7 @@ public class DocumentException_Exception
      * @param cause
      * @param message
      */
-    public DocumentException_Exception(String message, DocumentException faultInfo, Throwable cause) {
+    public DocumentException_Exception(String message, DocumentException faultInfo, java.lang.Throwable cause) {
         super(message, cause);
         this.faultInfo = faultInfo;
     }

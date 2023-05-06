@@ -7,6 +7,12 @@
 <xsd:import namespace="http://services.rsi.wvffle.net/" schemaLocation="https://wsdl--main--project-rsi--siwykot41.code.wvffle.net/RSI/CityInformationService?xsd=1"/>
 </xsd:schema>
 </types>
+<message name="modifyString">
+<part name="parameters" element="tns:modifyString"/>
+</message>
+<message name="modifyStringResponse">
+<part name="parameters" element="tns:modifyStringResponse"/>
+</message>
 <message name="modifyEventDescription">
 <part name="parameters" element="tns:modifyEventDescription"/>
 </message>
@@ -30,12 +36,6 @@
 </message>
 <message name="getEventsResponse">
 <part name="parameters" element="tns:getEventsResponse"/>
-</message>
-<message name="modifyEventType">
-<part name="parameters" element="tns:modifyEventType"/>
-</message>
-<message name="modifyEventTypeResponse">
-<part name="parameters" element="tns:modifyEventTypeResponse"/>
 </message>
 <message name="modifyEventName">
 <part name="parameters" element="tns:modifyEventName"/>
@@ -70,7 +70,14 @@
 <message name="addEventResponse">
 <part name="parameters" element="tns:addEventResponse"/>
 </message>
+<message name="SQLException">
+<part name="fault" element="tns:SQLException"/>
+</message>
 <portType name="CityInformation">
+<operation name="modifyString">
+<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyStringRequest" message="tns:modifyString"/>
+<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyStringResponse" message="tns:modifyStringResponse"/>
+</operation>
 <operation name="modifyEventDescription">
 <input wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyEventDescriptionRequest" message="tns:modifyEventDescription"/>
 <output wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyEventDescriptionResponse" message="tns:modifyEventDescriptionResponse"/>
@@ -86,10 +93,6 @@
 <operation name="getEvents">
 <input wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventsRequest" message="tns:getEvents"/>
 <output wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventsResponse" message="tns:getEventsResponse"/>
-</operation>
-<operation name="modifyEventType">
-<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyEventTypeRequest" message="tns:modifyEventType"/>
-<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyEventTypeResponse" message="tns:modifyEventTypeResponse"/>
 </operation>
 <operation name="modifyEventName">
 <input wsam:Action="http://services.rsi.wvffle.net/CityInformation/modifyEventNameRequest" message="tns:modifyEventName"/>
@@ -111,11 +114,21 @@
 <operation name="addEvent">
 <input wsam:Action="http://services.rsi.wvffle.net/CityInformation/addEventRequest" message="tns:addEvent"/>
 <output wsam:Action="http://services.rsi.wvffle.net/CityInformation/addEventResponse" message="tns:addEventResponse"/>
+<fault message="tns:SQLException" name="SQLException" wsam:Action="http://services.rsi.wvffle.net/CityInformation/addEvent/Fault/SQLException"/>
 </operation>
 </portType>
 <binding name="CityInformationPortBinding" type="tns:CityInformation">
 <wsp:PolicyReference URI="#CityInformationPortBinding_MTOM_Policy-CityInformationPortBinding_MTOM_Policy"/>
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="modifyString">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="modifyEventDescription">
 <soap:operation soapAction=""/>
 <input>
@@ -144,15 +157,6 @@
 </output>
 </operation>
 <operation name="getEvents">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="modifyEventType">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -208,6 +212,9 @@
 <output>
 <soap:body use="literal"/>
 </output>
+<fault name="SQLException">
+<soap:fault name="SQLException" use="literal"/>
+</fault>
 </operation>
 </binding>
 <service name="CityInformationService">

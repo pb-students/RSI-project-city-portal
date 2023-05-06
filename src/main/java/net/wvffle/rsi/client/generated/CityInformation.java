@@ -30,6 +30,21 @@ public interface CityInformation {
     /**
      * 
      * @param name
+     * @param eventType
+     */
+    @WebMethod
+    @RequestWrapper(localName = "modifyString", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.ModifyString")
+    @ResponseWrapper(localName = "modifyStringResponse", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.ModifyStringResponse")
+    @Action(input = "http://services.rsi.wvffle.net/CityInformation/modifyStringRequest", output = "http://services.rsi.wvffle.net/CityInformation/modifyStringResponse")
+    public void modifyString(
+        @WebParam(name = "eventType", targetNamespace = "")
+        String eventType,
+        @WebParam(name = "name", targetNamespace = "")
+        String name);
+
+    /**
+     * 
+     * @param name
      * @param description
      */
     @WebMethod
@@ -83,21 +98,6 @@ public interface CityInformation {
     @ResponseWrapper(localName = "getEventsResponse", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.GetEventsResponse")
     @Action(input = "http://services.rsi.wvffle.net/CityInformation/getEventsRequest", output = "http://services.rsi.wvffle.net/CityInformation/getEventsResponse")
     public MapWrapper getEvents();
-
-    /**
-     * 
-     * @param name
-     * @param eventType
-     */
-    @WebMethod
-    @RequestWrapper(localName = "modifyEventType", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.ModifyEventType")
-    @ResponseWrapper(localName = "modifyEventTypeResponse", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.ModifyEventTypeResponse")
-    @Action(input = "http://services.rsi.wvffle.net/CityInformation/modifyEventTypeRequest", output = "http://services.rsi.wvffle.net/CityInformation/modifyEventTypeResponse")
-    public void modifyEventType(
-        @WebParam(name = "eventType", targetNamespace = "")
-        EventType eventType,
-        @WebParam(name = "name", targetNamespace = "")
-        String name);
 
     /**
      * 
@@ -167,19 +167,24 @@ public interface CityInformation {
      * @param name
      * @param description
      * @param type
+     * @throws SQLException_Exception
      */
     @WebMethod
     @RequestWrapper(localName = "addEvent", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.AddEvent")
     @ResponseWrapper(localName = "addEventResponse", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.AddEventResponse")
-    @Action(input = "http://services.rsi.wvffle.net/CityInformation/addEventRequest", output = "http://services.rsi.wvffle.net/CityInformation/addEventResponse")
+    @Action(input = "http://services.rsi.wvffle.net/CityInformation/addEventRequest", output = "http://services.rsi.wvffle.net/CityInformation/addEventResponse", fault = {
+        @FaultAction(className = SQLException_Exception.class, value = "http://services.rsi.wvffle.net/CityInformation/addEvent/Fault/SQLException")
+    })
     public void addEvent(
         @WebParam(name = "name", targetNamespace = "")
         String name,
         @WebParam(name = "type", targetNamespace = "")
-        EventType type,
+        String type,
         @WebParam(name = "date", targetNamespace = "")
         XMLGregorianCalendar date,
         @WebParam(name = "description", targetNamespace = "")
-        String description);
+        String description)
+        throws SQLException_Exception
+    ;
 
 }

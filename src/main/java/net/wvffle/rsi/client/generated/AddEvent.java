@@ -19,7 +19,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="type" type="{http://services.rsi.wvffle.net/}eventType" minOccurs="0"/>
+ *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="date" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
@@ -40,8 +40,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 public class AddEvent {
 
     protected String name;
-    @XmlSchemaType(name = "string")
-    protected EventType type;
+    protected String type;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar date;
     protected String description;
@@ -75,10 +74,10 @@ public class AddEvent {
      * 
      * @return
      *     possible object is
-     *     {@link EventType }
+     *     {@link String }
      *     
      */
-    public EventType getType() {
+    public String getType() {
         return type;
     }
 
@@ -87,10 +86,10 @@ public class AddEvent {
      * 
      * @param value
      *     allowed object is
-     *     {@link EventType }
+     *     {@link String }
      *     
      */
-    public void setType(EventType value) {
+    public void setType(String value) {
         this.type = value;
     }
 
