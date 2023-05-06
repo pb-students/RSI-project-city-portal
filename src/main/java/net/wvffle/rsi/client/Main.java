@@ -19,6 +19,7 @@ import javax.xml.ws.soap.MTOMFeature;
 
 import net.wvffle.rsi.client.generated.CityInformation;
 import net.wvffle.rsi.client.generated.CityInformationService;
+import net.wvffle.rsi.client.generated.ClassNotFoundException_Exception;
 import net.wvffle.rsi.client.generated.DocumentException_Exception;
 import net.wvffle.rsi.client.generated.Event;
 import net.wvffle.rsi.client.generated.SQLException_Exception;
@@ -27,7 +28,7 @@ import net.wvffle.rsi.client.generated.SQLException_Exception;
 public class Main {
     private static final String WS_URL = "https://wsdl--main--project-rsi--siwykot41.code.wvffle.net/RSI/CityInformationService?wsdl"; 
 
-    public static void main(String[] args) throws DatatypeConfigurationException, DocumentException_Exception, SQLException_Exception  {
+    public static void main(String[] args) throws DatatypeConfigurationException, DocumentException_Exception, SQLException_Exception, ClassNotFoundException_Exception  {
         // CityInformationService service  = new CityInformationService();
 
         // CityInformation port = service.getCityInformationPort(new MTOMFeature());
@@ -45,8 +46,8 @@ public class Main {
         // calendar.set(2000, 2, 2);
         // date = DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar); 
         // port.addEvent("Krzysztof Krawczyk - GWINT", "Concert", date, "Koncert Krzysztofa Krawczyka w klubie GWINT");
-        
-        // printEvents(port.getEventsByWeek(date));
+        // // port.getEventsByWeek(date);
+        // // printEvents();
         // printEvents(port.getEventsByDay(date));
         // System.out.println("------------");
         // port.modifyEventName("Krzysztof Krawczyk - GWINT", "Filip Rutkowski - GWINT");

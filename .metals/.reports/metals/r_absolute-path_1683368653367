@@ -1,4 +1,0 @@
-Uri: jdt://contents/javaee-endorsed-api-7.0.jar/javax.xml.ws.spi/FactoryFinder.class?%3DRSI%2F%5C%2Fhome%5C%2Fcoder%5C%2F.m2%5C%2Frepository%5C%2Fjavax%5C%2Fjavaee-endorsed-api%5C%2F7.0%5C%2Fjavaee-endorsed-api-7.0.jar%3D%2Fmaven.pomderived%3D%2Ftrue%3D%2F%3D%2Fmaven.pomderived%3D%2Ftrue%3D%2F%3D%2Fmaven.groupId%3D%2Fjavax%3D%2F%3D%2Fmaven.artifactId%3D%2Fjavaee-endorsed-api%3D%2F%3D%2Fmaven.version%3D%2F7.0%3D%2F%3D%2Fmaven.scope%3D%2Fcompile%3D%2F%3Cjavax.xml.ws.spi%28FactoryFinder.class
-
-Error message: Provider "jdt" not installed
-Error: java.nio.file.FileSystemNotFoundException: Provider "jdt" not installed

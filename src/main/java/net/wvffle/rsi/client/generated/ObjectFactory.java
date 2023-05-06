@@ -24,29 +24,22 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _ModifyEventDescription_QNAME = new QName("http://services.rsi.wvffle.net/", "modifyEventDescription");
-    private final static QName _ModifyString_QNAME = new QName("http://services.rsi.wvffle.net/", "modifyString");
-    private final static QName _GetEventsResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "getEventsResponse");
-    private final static QName _ClassNotFoundException_QNAME = new QName("http://services.rsi.wvffle.net/", "ClassNotFoundException");
-    private final static QName _ModifyEventNameResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "modifyEventNameResponse");
+    private final static QName _DeleteEvent_QNAME = new QName("http://services.rsi.wvffle.net/", "deleteEvent");
+    private final static QName _GetEventsForMonth_QNAME = new QName("http://services.rsi.wvffle.net/", "getEventsForMonth");
+    private final static QName _DeleteEventResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "deleteEventResponse");
+    private final static QName _UpdateEventResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "updateEventResponse");
+    private final static QName _GetEventsForDayResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "getEventsForDayResponse");
     private final static QName _AddEvent_QNAME = new QName("http://services.rsi.wvffle.net/", "addEvent");
-    private final static QName _GetEvents_QNAME = new QName("http://services.rsi.wvffle.net/", "getEvents");
-    private final static QName _ModifyStringResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "modifyStringResponse");
     private final static QName _DocumentException_QNAME = new QName("http://services.rsi.wvffle.net/", "DocumentException");
     private final static QName _AddEventResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "addEventResponse");
-    private final static QName _GetEventInfo_QNAME = new QName("http://services.rsi.wvffle.net/", "getEventInfo");
-    private final static QName _GetEventsByDayResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "getEventsByDayResponse");
+    private final static QName _UpdateEvent_QNAME = new QName("http://services.rsi.wvffle.net/", "updateEvent");
     private final static QName _GeneratePdfResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "generatePdfResponse");
-    private final static QName _ModifyEventDate_QNAME = new QName("http://services.rsi.wvffle.net/", "modifyEventDate");
-    private final static QName _GetEventInfoResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "getEventInfoResponse");
-    private final static QName _ModifyEventDateResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "modifyEventDateResponse");
-    private final static QName _ModifyEventName_QNAME = new QName("http://services.rsi.wvffle.net/", "modifyEventName");
-    private final static QName _GetEventsByDay_QNAME = new QName("http://services.rsi.wvffle.net/", "getEventsByDay");
-    private final static QName _GetEventsByWeek_QNAME = new QName("http://services.rsi.wvffle.net/", "getEventsByWeek");
+    private final static QName _GetEventsForMonthResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "getEventsForMonthResponse");
+    private final static QName _GetAllEventsResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "getAllEventsResponse");
+    private final static QName _GetEventsForDay_QNAME = new QName("http://services.rsi.wvffle.net/", "getEventsForDay");
+    private final static QName _GetAllEvents_QNAME = new QName("http://services.rsi.wvffle.net/", "getAllEvents");
     private final static QName _GeneratePdf_QNAME = new QName("http://services.rsi.wvffle.net/", "generatePdf");
-    private final static QName _ModifyEventDescriptionResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "modifyEventDescriptionResponse");
     private final static QName _SQLException_QNAME = new QName("http://services.rsi.wvffle.net/", "SQLException");
-    private final static QName _GetEventsByWeekResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "getEventsByWeekResponse");
     private final static QName _GeneratePdfResponseReturn_QNAME = new QName("", "return");
 
     /**
@@ -57,43 +50,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetEventsByDay }
-     * 
-     */
-    public GetEventsByDay createGetEventsByDay() {
-        return new GetEventsByDay();
-    }
-
-    /**
-     * Create an instance of {@link GetEventsByWeek }
-     * 
-     */
-    public GetEventsByWeek createGetEventsByWeek() {
-        return new GetEventsByWeek();
-    }
-
-    /**
-     * Create an instance of {@link ModifyEventDescriptionResponse }
-     * 
-     */
-    public ModifyEventDescriptionResponse createModifyEventDescriptionResponse() {
-        return new ModifyEventDescriptionResponse();
-    }
-
-    /**
      * Create an instance of {@link SQLException }
      * 
      */
     public SQLException createSQLException() {
         return new SQLException();
-    }
-
-    /**
-     * Create an instance of {@link GetEventsByWeekResponse }
-     * 
-     */
-    public GetEventsByWeekResponse createGetEventsByWeekResponse() {
-        return new GetEventsByWeekResponse();
     }
 
     /**
@@ -113,35 +74,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetEventInfoResponse }
+     * Create an instance of {@link GetEventsForMonthResponse }
      * 
      */
-    public GetEventInfoResponse createGetEventInfoResponse() {
-        return new GetEventInfoResponse();
+    public GetEventsForMonthResponse createGetEventsForMonthResponse() {
+        return new GetEventsForMonthResponse();
     }
 
     /**
-     * Create an instance of {@link ModifyEventDateResponse }
+     * Create an instance of {@link GetAllEvents }
      * 
      */
-    public ModifyEventDateResponse createModifyEventDateResponse() {
-        return new ModifyEventDateResponse();
+    public GetAllEvents createGetAllEvents() {
+        return new GetAllEvents();
     }
 
     /**
-     * Create an instance of {@link ModifyEventName }
+     * Create an instance of {@link GetAllEventsResponse }
      * 
      */
-    public ModifyEventName createModifyEventName() {
-        return new ModifyEventName();
+    public GetAllEventsResponse createGetAllEventsResponse() {
+        return new GetAllEventsResponse();
     }
 
     /**
-     * Create an instance of {@link ModifyEventDate }
+     * Create an instance of {@link GetEventsForDay }
      * 
      */
-    public ModifyEventDate createModifyEventDate() {
-        return new ModifyEventDate();
+    public GetEventsForDay createGetEventsForDay() {
+        return new GetEventsForDay();
     }
 
     /**
@@ -153,35 +114,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetEvents }
+     * Create an instance of {@link GetEventsForDayResponse }
      * 
      */
-    public GetEvents createGetEvents() {
-        return new GetEvents();
+    public GetEventsForDayResponse createGetEventsForDayResponse() {
+        return new GetEventsForDayResponse();
     }
 
     /**
-     * Create an instance of {@link ModifyStringResponse }
+     * Create an instance of {@link UpdateEvent }
      * 
      */
-    public ModifyStringResponse createModifyStringResponse() {
-        return new ModifyStringResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetEventInfo }
-     * 
-     */
-    public GetEventInfo createGetEventInfo() {
-        return new GetEventInfo();
-    }
-
-    /**
-     * Create an instance of {@link GetEventsByDayResponse }
-     * 
-     */
-    public GetEventsByDayResponse createGetEventsByDayResponse() {
-        return new GetEventsByDayResponse();
+    public UpdateEvent createUpdateEvent() {
+        return new UpdateEvent();
     }
 
     /**
@@ -201,43 +146,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ModifyEventDescription }
+     * Create an instance of {@link DeleteEvent }
      * 
      */
-    public ModifyEventDescription createModifyEventDescription() {
-        return new ModifyEventDescription();
+    public DeleteEvent createDeleteEvent() {
+        return new DeleteEvent();
     }
 
     /**
-     * Create an instance of {@link ModifyString }
+     * Create an instance of {@link GetEventsForMonth }
      * 
      */
-    public ModifyString createModifyString() {
-        return new ModifyString();
+    public GetEventsForMonth createGetEventsForMonth() {
+        return new GetEventsForMonth();
     }
 
     /**
-     * Create an instance of {@link ClassNotFoundException }
+     * Create an instance of {@link DeleteEventResponse }
      * 
      */
-    public ClassNotFoundException createClassNotFoundException() {
-        return new ClassNotFoundException();
+    public DeleteEventResponse createDeleteEventResponse() {
+        return new DeleteEventResponse();
     }
 
     /**
-     * Create an instance of {@link ModifyEventNameResponse }
+     * Create an instance of {@link UpdateEventResponse }
      * 
      */
-    public ModifyEventNameResponse createModifyEventNameResponse() {
-        return new ModifyEventNameResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetEventsResponse }
-     * 
-     */
-    public GetEventsResponse createGetEventsResponse() {
-        return new GetEventsResponse();
+    public UpdateEventResponse createUpdateEventResponse() {
+        return new UpdateEventResponse();
     }
 
     /**
@@ -246,30 +183,6 @@ public class ObjectFactory {
      */
     public Exception createException() {
         return new Exception();
-    }
-
-    /**
-     * Create an instance of {@link Event }
-     * 
-     */
-    public Event createEvent() {
-        return new Event();
-    }
-
-    /**
-     * Create an instance of {@link SqlException }
-     * 
-     */
-    public SqlException createSqlException() {
-        return new SqlException();
-    }
-
-    /**
-     * Create an instance of {@link MapWrapper }
-     * 
-     */
-    public MapWrapper createMapWrapper() {
-        return new MapWrapper();
     }
 
     /**
@@ -289,48 +202,64 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ModifyEventDescription }{@code >}}
+     * Create an instance of {@link Event }
      * 
      */
-    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "modifyEventDescription")
-    public JAXBElement<ModifyEventDescription> createModifyEventDescription(ModifyEventDescription value) {
-        return new JAXBElement<ModifyEventDescription>(_ModifyEventDescription_QNAME, ModifyEventDescription.class, null, value);
+    public Event createEvent() {
+        return new Event();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ModifyString }{@code >}}
+     * Create an instance of {@link SqlException }
      * 
      */
-    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "modifyString")
-    public JAXBElement<ModifyString> createModifyString(ModifyString value) {
-        return new JAXBElement<ModifyString>(_ModifyString_QNAME, ModifyString.class, null, value);
+    public SqlException createSqlException() {
+        return new SqlException();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetEventsResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteEvent }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "getEventsResponse")
-    public JAXBElement<GetEventsResponse> createGetEventsResponse(GetEventsResponse value) {
-        return new JAXBElement<GetEventsResponse>(_GetEventsResponse_QNAME, GetEventsResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "deleteEvent")
+    public JAXBElement<DeleteEvent> createDeleteEvent(DeleteEvent value) {
+        return new JAXBElement<DeleteEvent>(_DeleteEvent_QNAME, DeleteEvent.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ClassNotFoundException }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetEventsForMonth }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "ClassNotFoundException")
-    public JAXBElement<ClassNotFoundException> createClassNotFoundException(ClassNotFoundException value) {
-        return new JAXBElement<ClassNotFoundException>(_ClassNotFoundException_QNAME, ClassNotFoundException.class, null, value);
+    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "getEventsForMonth")
+    public JAXBElement<GetEventsForMonth> createGetEventsForMonth(GetEventsForMonth value) {
+        return new JAXBElement<GetEventsForMonth>(_GetEventsForMonth_QNAME, GetEventsForMonth.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ModifyEventNameResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteEventResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "modifyEventNameResponse")
-    public JAXBElement<ModifyEventNameResponse> createModifyEventNameResponse(ModifyEventNameResponse value) {
-        return new JAXBElement<ModifyEventNameResponse>(_ModifyEventNameResponse_QNAME, ModifyEventNameResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "deleteEventResponse")
+    public JAXBElement<DeleteEventResponse> createDeleteEventResponse(DeleteEventResponse value) {
+        return new JAXBElement<DeleteEventResponse>(_DeleteEventResponse_QNAME, DeleteEventResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateEventResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "updateEventResponse")
+    public JAXBElement<UpdateEventResponse> createUpdateEventResponse(UpdateEventResponse value) {
+        return new JAXBElement<UpdateEventResponse>(_UpdateEventResponse_QNAME, UpdateEventResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetEventsForDayResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "getEventsForDayResponse")
+    public JAXBElement<GetEventsForDayResponse> createGetEventsForDayResponse(GetEventsForDayResponse value) {
+        return new JAXBElement<GetEventsForDayResponse>(_GetEventsForDayResponse_QNAME, GetEventsForDayResponse.class, null, value);
     }
 
     /**
@@ -340,24 +269,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "addEvent")
     public JAXBElement<AddEvent> createAddEvent(AddEvent value) {
         return new JAXBElement<AddEvent>(_AddEvent_QNAME, AddEvent.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetEvents }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "getEvents")
-    public JAXBElement<GetEvents> createGetEvents(GetEvents value) {
-        return new JAXBElement<GetEvents>(_GetEvents_QNAME, GetEvents.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ModifyStringResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "modifyStringResponse")
-    public JAXBElement<ModifyStringResponse> createModifyStringResponse(ModifyStringResponse value) {
-        return new JAXBElement<ModifyStringResponse>(_ModifyStringResponse_QNAME, ModifyStringResponse.class, null, value);
     }
 
     /**
@@ -379,21 +290,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetEventInfo }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateEvent }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "getEventInfo")
-    public JAXBElement<GetEventInfo> createGetEventInfo(GetEventInfo value) {
-        return new JAXBElement<GetEventInfo>(_GetEventInfo_QNAME, GetEventInfo.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetEventsByDayResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "getEventsByDayResponse")
-    public JAXBElement<GetEventsByDayResponse> createGetEventsByDayResponse(GetEventsByDayResponse value) {
-        return new JAXBElement<GetEventsByDayResponse>(_GetEventsByDayResponse_QNAME, GetEventsByDayResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "updateEvent")
+    public JAXBElement<UpdateEvent> createUpdateEvent(UpdateEvent value) {
+        return new JAXBElement<UpdateEvent>(_UpdateEvent_QNAME, UpdateEvent.class, null, value);
     }
 
     /**
@@ -406,57 +308,39 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ModifyEventDate }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetEventsForMonthResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "modifyEventDate")
-    public JAXBElement<ModifyEventDate> createModifyEventDate(ModifyEventDate value) {
-        return new JAXBElement<ModifyEventDate>(_ModifyEventDate_QNAME, ModifyEventDate.class, null, value);
+    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "getEventsForMonthResponse")
+    public JAXBElement<GetEventsForMonthResponse> createGetEventsForMonthResponse(GetEventsForMonthResponse value) {
+        return new JAXBElement<GetEventsForMonthResponse>(_GetEventsForMonthResponse_QNAME, GetEventsForMonthResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetEventInfoResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetAllEventsResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "getEventInfoResponse")
-    public JAXBElement<GetEventInfoResponse> createGetEventInfoResponse(GetEventInfoResponse value) {
-        return new JAXBElement<GetEventInfoResponse>(_GetEventInfoResponse_QNAME, GetEventInfoResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "getAllEventsResponse")
+    public JAXBElement<GetAllEventsResponse> createGetAllEventsResponse(GetAllEventsResponse value) {
+        return new JAXBElement<GetAllEventsResponse>(_GetAllEventsResponse_QNAME, GetAllEventsResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ModifyEventDateResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetEventsForDay }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "modifyEventDateResponse")
-    public JAXBElement<ModifyEventDateResponse> createModifyEventDateResponse(ModifyEventDateResponse value) {
-        return new JAXBElement<ModifyEventDateResponse>(_ModifyEventDateResponse_QNAME, ModifyEventDateResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "getEventsForDay")
+    public JAXBElement<GetEventsForDay> createGetEventsForDay(GetEventsForDay value) {
+        return new JAXBElement<GetEventsForDay>(_GetEventsForDay_QNAME, GetEventsForDay.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ModifyEventName }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetAllEvents }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "modifyEventName")
-    public JAXBElement<ModifyEventName> createModifyEventName(ModifyEventName value) {
-        return new JAXBElement<ModifyEventName>(_ModifyEventName_QNAME, ModifyEventName.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetEventsByDay }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "getEventsByDay")
-    public JAXBElement<GetEventsByDay> createGetEventsByDay(GetEventsByDay value) {
-        return new JAXBElement<GetEventsByDay>(_GetEventsByDay_QNAME, GetEventsByDay.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetEventsByWeek }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "getEventsByWeek")
-    public JAXBElement<GetEventsByWeek> createGetEventsByWeek(GetEventsByWeek value) {
-        return new JAXBElement<GetEventsByWeek>(_GetEventsByWeek_QNAME, GetEventsByWeek.class, null, value);
+    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "getAllEvents")
+    public JAXBElement<GetAllEvents> createGetAllEvents(GetAllEvents value) {
+        return new JAXBElement<GetAllEvents>(_GetAllEvents_QNAME, GetAllEvents.class, null, value);
     }
 
     /**
@@ -469,30 +353,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ModifyEventDescriptionResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "modifyEventDescriptionResponse")
-    public JAXBElement<ModifyEventDescriptionResponse> createModifyEventDescriptionResponse(ModifyEventDescriptionResponse value) {
-        return new JAXBElement<ModifyEventDescriptionResponse>(_ModifyEventDescriptionResponse_QNAME, ModifyEventDescriptionResponse.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SQLException }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "SQLException")
     public JAXBElement<SQLException> createSQLException(SQLException value) {
         return new JAXBElement<SQLException>(_SQLException_QNAME, SQLException.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetEventsByWeekResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "getEventsByWeekResponse")
-    public JAXBElement<GetEventsByWeekResponse> createGetEventsByWeekResponse(GetEventsByWeekResponse value) {
-        return new JAXBElement<GetEventsByWeekResponse>(_GetEventsByWeekResponse_QNAME, GetEventsByWeekResponse.class, null, value);
     }
 
     /**

@@ -29,123 +29,6 @@ public interface CityInformation {
 
     /**
      * 
-     * @param name
-     * @param eventType
-     */
-    @WebMethod
-    @RequestWrapper(localName = "modifyString", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.ModifyString")
-    @ResponseWrapper(localName = "modifyStringResponse", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.ModifyStringResponse")
-    @Action(input = "http://services.rsi.wvffle.net/CityInformation/modifyStringRequest", output = "http://services.rsi.wvffle.net/CityInformation/modifyStringResponse")
-    public void modifyString(
-        @WebParam(name = "eventType", targetNamespace = "")
-        String eventType,
-        @WebParam(name = "name", targetNamespace = "")
-        String name);
-
-    /**
-     * 
-     * @param name
-     * @param description
-     */
-    @WebMethod
-    @RequestWrapper(localName = "modifyEventDescription", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.ModifyEventDescription")
-    @ResponseWrapper(localName = "modifyEventDescriptionResponse", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.ModifyEventDescriptionResponse")
-    @Action(input = "http://services.rsi.wvffle.net/CityInformation/modifyEventDescriptionRequest", output = "http://services.rsi.wvffle.net/CityInformation/modifyEventDescriptionResponse")
-    public void modifyEventDescription(
-        @WebParam(name = "description", targetNamespace = "")
-        String description,
-        @WebParam(name = "name", targetNamespace = "")
-        String name);
-
-    /**
-     * 
-     * @param name
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getEventInfo", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.GetEventInfo")
-    @ResponseWrapper(localName = "getEventInfoResponse", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.GetEventInfoResponse")
-    @Action(input = "http://services.rsi.wvffle.net/CityInformation/getEventInfoRequest", output = "http://services.rsi.wvffle.net/CityInformation/getEventInfoResponse")
-    public String getEventInfo(
-        @WebParam(name = "name", targetNamespace = "")
-        String name);
-
-    /**
-     * 
-     * @param date
-     * @param name
-     */
-    @WebMethod
-    @RequestWrapper(localName = "modifyEventDate", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.ModifyEventDate")
-    @ResponseWrapper(localName = "modifyEventDateResponse", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.ModifyEventDateResponse")
-    @Action(input = "http://services.rsi.wvffle.net/CityInformation/modifyEventDateRequest", output = "http://services.rsi.wvffle.net/CityInformation/modifyEventDateResponse")
-    public void modifyEventDate(
-        @WebParam(name = "date", targetNamespace = "")
-        XMLGregorianCalendar date,
-        @WebParam(name = "name", targetNamespace = "")
-        String name);
-
-    /**
-     * 
-     * @return
-     *     returns net.wvffle.rsi.client.generated.MapWrapper
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getEvents", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.GetEvents")
-    @ResponseWrapper(localName = "getEventsResponse", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.GetEventsResponse")
-    @Action(input = "http://services.rsi.wvffle.net/CityInformation/getEventsRequest", output = "http://services.rsi.wvffle.net/CityInformation/getEventsResponse")
-    public MapWrapper getEvents();
-
-    /**
-     * 
-     * @param newName
-     * @param oldName
-     */
-    @WebMethod
-    @RequestWrapper(localName = "modifyEventName", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.ModifyEventName")
-    @ResponseWrapper(localName = "modifyEventNameResponse", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.ModifyEventNameResponse")
-    @Action(input = "http://services.rsi.wvffle.net/CityInformation/modifyEventNameRequest", output = "http://services.rsi.wvffle.net/CityInformation/modifyEventNameResponse")
-    public void modifyEventName(
-        @WebParam(name = "oldName", targetNamespace = "")
-        String oldName,
-        @WebParam(name = "newName", targetNamespace = "")
-        String newName);
-
-    /**
-     * 
-     * @param date
-     * @return
-     *     returns java.util.List<net.wvffle.rsi.client.generated.Event>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getEventsByDay", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.GetEventsByDay")
-    @ResponseWrapper(localName = "getEventsByDayResponse", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.GetEventsByDayResponse")
-    @Action(input = "http://services.rsi.wvffle.net/CityInformation/getEventsByDayRequest", output = "http://services.rsi.wvffle.net/CityInformation/getEventsByDayResponse")
-    public List<Event> getEventsByDay(
-        @WebParam(name = "date", targetNamespace = "")
-        XMLGregorianCalendar date);
-
-    /**
-     * 
-     * @param date
-     * @return
-     *     returns java.util.List<net.wvffle.rsi.client.generated.Event>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getEventsByWeek", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.GetEventsByWeek")
-    @ResponseWrapper(localName = "getEventsByWeekResponse", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.GetEventsByWeekResponse")
-    @Action(input = "http://services.rsi.wvffle.net/CityInformation/getEventsByWeekRequest", output = "http://services.rsi.wvffle.net/CityInformation/getEventsByWeekResponse")
-    public List<Event> getEventsByWeek(
-        @WebParam(name = "date", targetNamespace = "")
-        XMLGregorianCalendar date);
-
-    /**
-     * 
      * @return
      *     returns byte[]
      * @throws DocumentException_Exception
@@ -167,17 +50,18 @@ public interface CityInformation {
      * @param name
      * @param description
      * @param type
+     * @return
+     *     returns net.wvffle.rsi.client.generated.Event
      * @throws SQLException_Exception
-     * @throws ClassNotFoundException_Exception
      */
     @WebMethod
+    @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "addEvent", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.AddEvent")
     @ResponseWrapper(localName = "addEventResponse", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.AddEventResponse")
     @Action(input = "http://services.rsi.wvffle.net/CityInformation/addEventRequest", output = "http://services.rsi.wvffle.net/CityInformation/addEventResponse", fault = {
-        @FaultAction(className = SQLException_Exception.class, value = "http://services.rsi.wvffle.net/CityInformation/addEvent/Fault/SQLException"),
-        @FaultAction(className = ClassNotFoundException_Exception.class, value = "http://services.rsi.wvffle.net/CityInformation/addEvent/Fault/ClassNotFoundException")
+        @FaultAction(className = SQLException_Exception.class, value = "http://services.rsi.wvffle.net/CityInformation/addEvent/Fault/SQLException")
     })
-    public void addEvent(
+    public Event addEvent(
         @WebParam(name = "name", targetNamespace = "")
         String name,
         @WebParam(name = "type", targetNamespace = "")
@@ -186,7 +70,113 @@ public interface CityInformation {
         XMLGregorianCalendar date,
         @WebParam(name = "description", targetNamespace = "")
         String description)
-        throws ClassNotFoundException_Exception, SQLException_Exception
+        throws SQLException_Exception
+    ;
+
+    /**
+     * 
+     * @param date
+     * @param name
+     * @param description
+     * @param id
+     * @param type
+     * @return
+     *     returns net.wvffle.rsi.client.generated.Event
+     * @throws SQLException_Exception
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "updateEvent", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.UpdateEvent")
+    @ResponseWrapper(localName = "updateEventResponse", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.UpdateEventResponse")
+    @Action(input = "http://services.rsi.wvffle.net/CityInformation/updateEventRequest", output = "http://services.rsi.wvffle.net/CityInformation/updateEventResponse", fault = {
+        @FaultAction(className = SQLException_Exception.class, value = "http://services.rsi.wvffle.net/CityInformation/updateEvent/Fault/SQLException")
+    })
+    public Event updateEvent(
+        @WebParam(name = "id", targetNamespace = "")
+        long id,
+        @WebParam(name = "name", targetNamespace = "")
+        String name,
+        @WebParam(name = "type", targetNamespace = "")
+        String type,
+        @WebParam(name = "date", targetNamespace = "")
+        XMLGregorianCalendar date,
+        @WebParam(name = "description", targetNamespace = "")
+        String description)
+        throws SQLException_Exception
+    ;
+
+    /**
+     * 
+     * @param id
+     * @throws SQLException_Exception
+     */
+    @WebMethod
+    @RequestWrapper(localName = "deleteEvent", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.DeleteEvent")
+    @ResponseWrapper(localName = "deleteEventResponse", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.DeleteEventResponse")
+    @Action(input = "http://services.rsi.wvffle.net/CityInformation/deleteEventRequest", output = "http://services.rsi.wvffle.net/CityInformation/deleteEventResponse", fault = {
+        @FaultAction(className = SQLException_Exception.class, value = "http://services.rsi.wvffle.net/CityInformation/deleteEvent/Fault/SQLException")
+    })
+    public void deleteEvent(
+        @WebParam(name = "id", targetNamespace = "")
+        long id)
+        throws SQLException_Exception
+    ;
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<net.wvffle.rsi.client.generated.Event>
+     * @throws SQLException_Exception
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getAllEvents", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.GetAllEvents")
+    @ResponseWrapper(localName = "getAllEventsResponse", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.GetAllEventsResponse")
+    @Action(input = "http://services.rsi.wvffle.net/CityInformation/getAllEventsRequest", output = "http://services.rsi.wvffle.net/CityInformation/getAllEventsResponse", fault = {
+        @FaultAction(className = SQLException_Exception.class, value = "http://services.rsi.wvffle.net/CityInformation/getAllEvents/Fault/SQLException")
+    })
+    public List<Event> getAllEvents()
+        throws SQLException_Exception
+    ;
+
+    /**
+     * 
+     * @param date
+     * @return
+     *     returns java.util.List<net.wvffle.rsi.client.generated.Event>
+     * @throws SQLException_Exception
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getEventsForDay", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.GetEventsForDay")
+    @ResponseWrapper(localName = "getEventsForDayResponse", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.GetEventsForDayResponse")
+    @Action(input = "http://services.rsi.wvffle.net/CityInformation/getEventsForDayRequest", output = "http://services.rsi.wvffle.net/CityInformation/getEventsForDayResponse", fault = {
+        @FaultAction(className = SQLException_Exception.class, value = "http://services.rsi.wvffle.net/CityInformation/getEventsForDay/Fault/SQLException")
+    })
+    public List<Event> getEventsForDay(
+        @WebParam(name = "date", targetNamespace = "")
+        XMLGregorianCalendar date)
+        throws SQLException_Exception
+    ;
+
+    /**
+     * 
+     * @param date
+     * @return
+     *     returns java.util.List<net.wvffle.rsi.client.generated.Event>
+     * @throws SQLException_Exception
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getEventsForMonth", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.GetEventsForMonth")
+    @ResponseWrapper(localName = "getEventsForMonthResponse", targetNamespace = "http://services.rsi.wvffle.net/", className = "net.wvffle.rsi.client.generated.GetEventsForMonthResponse")
+    @Action(input = "http://services.rsi.wvffle.net/CityInformation/getEventsForMonthRequest", output = "http://services.rsi.wvffle.net/CityInformation/getEventsForMonthResponse", fault = {
+        @FaultAction(className = SQLException_Exception.class, value = "http://services.rsi.wvffle.net/CityInformation/getEventsForMonth/Fault/SQLException")
+    })
+    public List<Event> getEventsForMonth(
+        @WebParam(name = "date", targetNamespace = "")
+        XMLGregorianCalendar date)
+        throws SQLException_Exception
     ;
 
 }
