@@ -1,0 +1,4 @@
+
+/** modifyString */
+export interface ModifyString {
+}

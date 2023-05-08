@@ -1,0 +1,4 @@
+
+/** modifyEventDescription */
+export interface ModifyEventDescription {
+}

@@ -5,7 +5,7 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "generate:client": "rest-client-generator --output-file rest-client.ts ../src/main/resources/service.wsdl",
+    "generate:client": " pnpm wsdl-tsclient ../src/main/resources/service.wsdl -o ./server/wsdl",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
@@ -18,13 +18,15 @@
     "nuxt": "^3.4.3",
     "rest-client-generator": "^0.2.8",
     "typescript": "^5.0.4",
-    "wsdl-tsclient": "^1.4.0"
+    "wsdl-tsclient": "github:TickX/wsdl-tsclient"
   },
   "dependencies": {
     "@fontsource/inter": "^4.5.15",
     "@fontsource/lato": "^4.5.10",
+    "@formkit/nuxt": "^0.16.5",
+    "@formkit/themes": "^0.16.5",
     "@headlessui/vue": "^1.7.13",
     "@heroicons/vue": "^2.0.17",
-    "soap": "^1.0.0"
+    "dateformat": "^5.0.3"
   }
 }
