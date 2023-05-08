@@ -1,13 +1,21 @@
 <script setup lang="ts">
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
+import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
 
 const links = [
-  { to: '/', title: 'Informacje' },
-  { to: '/calendar', title: 'Kalendarz' },
+  { to: '/', title: 'Wszytkie wydarzenia' },
+  { to: `/events/day/${new Date().toISOString().split('T')[0]}`, title: 'Wydarzenia per dzień' },
+  { to: `/events/week/${new Date().toISOString().split('T')[0]}`, title: 'Wydarzenia per tydzień' },
 ]
 
 const NuxtLink = resolveComponent('NuxtLink')
+const downloadPdf = async () => {
+  const downloadLink = document.createElement("a");
+  const fileName = "wydarzenia.pdf";
+  downloadLink.href = await $fetch('/api/pdf');
+  downloadLink.download = fileName;
+  downloadLink.click();
+}
 </script>
 
 <template>
@@ -32,11 +40,6 @@ const NuxtLink = resolveComponent('NuxtLink')
           </div>
         </div>
         <div class="hidden sm:ml-6 sm:flex sm:items-center">
-          <button type="button" class="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2">
-            <span class="sr-only">View notifications</span>
-            <BellIcon class="h-6 w-6" aria-hidden="true" />
-          </button>
-
           <!-- Profile dropdown -->
           <Menu as="div" class="relative ml-3">
             <div>
@@ -48,13 +51,19 @@ const NuxtLink = resolveComponent('NuxtLink')
             <transition enter-active-class="transition ease-out duration-200" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
               <MenuItems class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                 <MenuItem v-slot="{ active }">
-                  <a href="#" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Your Profile</a>
+                  <NuxtLink to="/events/new" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">
+                    Dodaj wydarzenie
+                  </NuxtLink>
                 </MenuItem>
                 <MenuItem v-slot="{ active }">
-                  <a href="#" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Settings</a>
+                  <a @click="downloadPdf" href="#" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">
+                    Pobierz PDF
+                  </a>
                 </MenuItem>
                 <MenuItem v-slot="{ active }">
-                  <a href="#" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Sign out</a>
+                  <a href="#" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">
+                    Wyloguj
+                  </a>
                 </MenuItem>
               </MenuItems>
             </transition>
@@ -93,15 +102,11 @@ const NuxtLink = resolveComponent('NuxtLink')
             <div class="text-base font-medium text-gray-800">Tom Cook</div>
             <div class="text-sm font-medium text-gray-500">tom@example.com</div>
           </div>
-          <button type="button" class="ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2">
-            <span class="sr-only">View notifications</span>
-            <BellIcon class="h-6 w-6" aria-hidden="true" />
-          </button>
         </div>
         <div class="mt-3 space-y-1">
-          <DisclosureButton as="a" href="#" class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800">Your Profile</DisclosureButton>
-          <DisclosureButton as="a" href="#" class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800">Settings</DisclosureButton>
-          <DisclosureButton as="a" href="#" class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800">Sign out</DisclosureButton>
+          <DisclosureButton :as="NuxtLink" to="/events/new" class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800">Dodaj</DisclosureButton>
+          <DisclosureButton as="a" @click="downloadPdf" href="#" class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800">Pobierz PDF</DisclosureButton>
+          <DisclosureButton as="a" href="#" class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800">Wyloguj</DisclosureButton>
         </div>
       </div>
     </DisclosurePanel>

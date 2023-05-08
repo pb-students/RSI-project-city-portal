@@ -1,0 +1,4 @@
+
+/** getEventsByDay */
+export interface GetEventsByDay {
+}
