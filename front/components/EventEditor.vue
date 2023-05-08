@@ -48,7 +48,7 @@ const save = async () => {
       label="Nazwa wydarzenia"
       validation="required"
     />
-    <div class="flex">
+    <div class="flex gap-3">
       <FormKit
         type="date"
         name="date"
