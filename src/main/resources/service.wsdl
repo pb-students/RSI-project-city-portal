@@ -7,6 +7,21 @@
 <xsd:import namespace="http://services.rsi.wvffle.net/" schemaLocation="https://wsdl--main--project-rsi--siwykot41.code.wvffle.net/RSI/CityInformationService?xsd=1"/>
 </xsd:schema>
 </types>
+<message name="getPaginatedEvents">
+<part name="parameters" element="tns:getPaginatedEvents"/>
+</message>
+<message name="getPaginatedEventsResponse">
+<part name="parameters" element="tns:getPaginatedEventsResponse"/>
+</message>
+<message name="SQLException">
+<part name="fault" element="tns:SQLException"/>
+</message>
+<message name="getEventById">
+<part name="parameters" element="tns:getEventById"/>
+</message>
+<message name="getEventByIdResponse">
+<part name="parameters" element="tns:getEventByIdResponse"/>
+</message>
 <message name="generatePdf">
 <part name="parameters" element="tns:generatePdf"/>
 </message>
@@ -21,9 +36,6 @@
 </message>
 <message name="addEventResponse">
 <part name="parameters" element="tns:addEventResponse"/>
-</message>
-<message name="SQLException">
-<part name="fault" element="tns:SQLException"/>
 </message>
 <message name="updateEvent">
 <part name="parameters" element="tns:updateEvent"/>
@@ -49,13 +61,23 @@
 <message name="getEventsForDayResponse">
 <part name="parameters" element="tns:getEventsForDayResponse"/>
 </message>
-<message name="getEventsForMonth">
-<part name="parameters" element="tns:getEventsForMonth"/>
+<message name="getEventsForWeek">
+<part name="parameters" element="tns:getEventsForWeek"/>
 </message>
-<message name="getEventsForMonthResponse">
-<part name="parameters" element="tns:getEventsForMonthResponse"/>
+<message name="getEventsForWeekResponse">
+<part name="parameters" element="tns:getEventsForWeekResponse"/>
 </message>
 <portType name="CityInformation">
+<operation name="getPaginatedEvents">
+<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/getPaginatedEventsRequest" message="tns:getPaginatedEvents"/>
+<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/getPaginatedEventsResponse" message="tns:getPaginatedEventsResponse"/>
+<fault message="tns:SQLException" name="SQLException" wsam:Action="http://services.rsi.wvffle.net/CityInformation/getPaginatedEvents/Fault/SQLException"/>
+</operation>
+<operation name="getEventById">
+<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventByIdRequest" message="tns:getEventById"/>
+<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventByIdResponse" message="tns:getEventByIdResponse"/>
+<fault message="tns:SQLException" name="SQLException" wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventById/Fault/SQLException"/>
+</operation>
 <operation name="generatePdf">
 <input wsam:Action="http://services.rsi.wvffle.net/CityInformation/generatePdfRequest" message="tns:generatePdf"/>
 <output wsam:Action="http://services.rsi.wvffle.net/CityInformation/generatePdfResponse" message="tns:generatePdfResponse"/>
@@ -86,15 +108,39 @@
 <output wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventsForDayResponse" message="tns:getEventsForDayResponse"/>
 <fault message="tns:SQLException" name="SQLException" wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventsForDay/Fault/SQLException"/>
 </operation>
-<operation name="getEventsForMonth">
-<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventsForMonthRequest" message="tns:getEventsForMonth"/>
-<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventsForMonthResponse" message="tns:getEventsForMonthResponse"/>
-<fault message="tns:SQLException" name="SQLException" wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventsForMonth/Fault/SQLException"/>
+<operation name="getEventsForWeek">
+<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventsForWeekRequest" message="tns:getEventsForWeek"/>
+<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventsForWeekResponse" message="tns:getEventsForWeekResponse"/>
+<fault message="tns:SQLException" name="SQLException" wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventsForWeek/Fault/SQLException"/>
 </operation>
 </portType>
 <binding name="CityInformationPortBinding" type="tns:CityInformation">
 <wsp:PolicyReference URI="#CityInformationPortBinding_MTOM_Policy-CityInformationPortBinding_MTOM_Policy"/>
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="getPaginatedEvents">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="SQLException">
+<soap:fault name="SQLException" use="literal"/>
+</fault>
+</operation>
+<operation name="getEventById">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="SQLException">
+<soap:fault name="SQLException" use="literal"/>
+</fault>
+</operation>
 <operation name="generatePdf">
 <soap:operation soapAction=""/>
 <input>
@@ -167,7 +213,7 @@
 <soap:fault name="SQLException" use="literal"/>
 </fault>
 </operation>
-<operation name="getEventsForMonth">
+<operation name="getEventsForWeek">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

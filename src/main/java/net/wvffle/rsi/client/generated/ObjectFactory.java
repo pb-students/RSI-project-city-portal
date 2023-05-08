@@ -25,19 +25,23 @@ import javax.xml.namespace.QName;
 public class ObjectFactory {
 
     private final static QName _DeleteEvent_QNAME = new QName("http://services.rsi.wvffle.net/", "deleteEvent");
-    private final static QName _GetEventsForMonth_QNAME = new QName("http://services.rsi.wvffle.net/", "getEventsForMonth");
+    private final static QName _GetPaginatedEvents_QNAME = new QName("http://services.rsi.wvffle.net/", "getPaginatedEvents");
     private final static QName _DeleteEventResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "deleteEventResponse");
     private final static QName _UpdateEventResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "updateEventResponse");
+    private final static QName _GetEventsForWeek_QNAME = new QName("http://services.rsi.wvffle.net/", "getEventsForWeek");
+    private final static QName _GetEventById_QNAME = new QName("http://services.rsi.wvffle.net/", "getEventById");
     private final static QName _GetEventsForDayResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "getEventsForDayResponse");
     private final static QName _AddEvent_QNAME = new QName("http://services.rsi.wvffle.net/", "addEvent");
+    private final static QName _GetPaginatedEventsResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "getPaginatedEventsResponse");
     private final static QName _DocumentException_QNAME = new QName("http://services.rsi.wvffle.net/", "DocumentException");
     private final static QName _AddEventResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "addEventResponse");
     private final static QName _UpdateEvent_QNAME = new QName("http://services.rsi.wvffle.net/", "updateEvent");
     private final static QName _GeneratePdfResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "generatePdfResponse");
-    private final static QName _GetEventsForMonthResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "getEventsForMonthResponse");
+    private final static QName _GetEventsForWeekResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "getEventsForWeekResponse");
     private final static QName _GetAllEventsResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "getAllEventsResponse");
     private final static QName _GetEventsForDay_QNAME = new QName("http://services.rsi.wvffle.net/", "getEventsForDay");
     private final static QName _GetAllEvents_QNAME = new QName("http://services.rsi.wvffle.net/", "getAllEvents");
+    private final static QName _GetEventByIdResponse_QNAME = new QName("http://services.rsi.wvffle.net/", "getEventByIdResponse");
     private final static QName _GeneratePdf_QNAME = new QName("http://services.rsi.wvffle.net/", "generatePdf");
     private final static QName _SQLException_QNAME = new QName("http://services.rsi.wvffle.net/", "SQLException");
     private final static QName _GeneratePdfResponseReturn_QNAME = new QName("", "return");
@@ -47,6 +51,14 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link GetEventByIdResponse }
+     * 
+     */
+    public GetEventByIdResponse createGetEventByIdResponse() {
+        return new GetEventByIdResponse();
     }
 
     /**
@@ -74,11 +86,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetEventsForMonthResponse }
+     * Create an instance of {@link GetEventsForWeekResponse }
      * 
      */
-    public GetEventsForMonthResponse createGetEventsForMonthResponse() {
-        return new GetEventsForMonthResponse();
+    public GetEventsForWeekResponse createGetEventsForWeekResponse() {
+        return new GetEventsForWeekResponse();
     }
 
     /**
@@ -111,6 +123,22 @@ public class ObjectFactory {
      */
     public AddEvent createAddEvent() {
         return new AddEvent();
+    }
+
+    /**
+     * Create an instance of {@link GetPaginatedEventsResponse }
+     * 
+     */
+    public GetPaginatedEventsResponse createGetPaginatedEventsResponse() {
+        return new GetPaginatedEventsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetEventById }
+     * 
+     */
+    public GetEventById createGetEventById() {
+        return new GetEventById();
     }
 
     /**
@@ -154,11 +182,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetEventsForMonth }
+     * Create an instance of {@link GetPaginatedEvents }
      * 
      */
-    public GetEventsForMonth createGetEventsForMonth() {
-        return new GetEventsForMonth();
+    public GetPaginatedEvents createGetPaginatedEvents() {
+        return new GetPaginatedEvents();
+    }
+
+    /**
+     * Create an instance of {@link GetEventsForWeek }
+     * 
+     */
+    public GetEventsForWeek createGetEventsForWeek() {
+        return new GetEventsForWeek();
     }
 
     /**
@@ -186,22 +222,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Throwable }
-     * 
-     */
-    public Throwable createThrowable() {
-        return new Throwable();
-    }
-
-    /**
-     * Create an instance of {@link StackTraceElement }
-     * 
-     */
-    public StackTraceElement createStackTraceElement() {
-        return new StackTraceElement();
-    }
-
-    /**
      * Create an instance of {@link Event }
      * 
      */
@@ -218,6 +238,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Throwable }
+     * 
+     */
+    public Throwable createThrowable() {
+        return new Throwable();
+    }
+
+    /**
+     * Create an instance of {@link StackTraceElement }
+     * 
+     */
+    public StackTraceElement createStackTraceElement() {
+        return new StackTraceElement();
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link DeleteEvent }{@code >}}
      * 
      */
@@ -227,12 +263,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetEventsForMonth }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetPaginatedEvents }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "getEventsForMonth")
-    public JAXBElement<GetEventsForMonth> createGetEventsForMonth(GetEventsForMonth value) {
-        return new JAXBElement<GetEventsForMonth>(_GetEventsForMonth_QNAME, GetEventsForMonth.class, null, value);
+    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "getPaginatedEvents")
+    public JAXBElement<GetPaginatedEvents> createGetPaginatedEvents(GetPaginatedEvents value) {
+        return new JAXBElement<GetPaginatedEvents>(_GetPaginatedEvents_QNAME, GetPaginatedEvents.class, null, value);
     }
 
     /**
@@ -254,6 +290,24 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetEventsForWeek }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "getEventsForWeek")
+    public JAXBElement<GetEventsForWeek> createGetEventsForWeek(GetEventsForWeek value) {
+        return new JAXBElement<GetEventsForWeek>(_GetEventsForWeek_QNAME, GetEventsForWeek.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetEventById }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "getEventById")
+    public JAXBElement<GetEventById> createGetEventById(GetEventById value) {
+        return new JAXBElement<GetEventById>(_GetEventById_QNAME, GetEventById.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetEventsForDayResponse }{@code >}}
      * 
      */
@@ -269,6 +323,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "addEvent")
     public JAXBElement<AddEvent> createAddEvent(AddEvent value) {
         return new JAXBElement<AddEvent>(_AddEvent_QNAME, AddEvent.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetPaginatedEventsResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "getPaginatedEventsResponse")
+    public JAXBElement<GetPaginatedEventsResponse> createGetPaginatedEventsResponse(GetPaginatedEventsResponse value) {
+        return new JAXBElement<GetPaginatedEventsResponse>(_GetPaginatedEventsResponse_QNAME, GetPaginatedEventsResponse.class, null, value);
     }
 
     /**
@@ -308,12 +371,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetEventsForMonthResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetEventsForWeekResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "getEventsForMonthResponse")
-    public JAXBElement<GetEventsForMonthResponse> createGetEventsForMonthResponse(GetEventsForMonthResponse value) {
-        return new JAXBElement<GetEventsForMonthResponse>(_GetEventsForMonthResponse_QNAME, GetEventsForMonthResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "getEventsForWeekResponse")
+    public JAXBElement<GetEventsForWeekResponse> createGetEventsForWeekResponse(GetEventsForWeekResponse value) {
+        return new JAXBElement<GetEventsForWeekResponse>(_GetEventsForWeekResponse_QNAME, GetEventsForWeekResponse.class, null, value);
     }
 
     /**
@@ -341,6 +404,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "getAllEvents")
     public JAXBElement<GetAllEvents> createGetAllEvents(GetAllEvents value) {
         return new JAXBElement<GetAllEvents>(_GetAllEvents_QNAME, GetAllEvents.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetEventByIdResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://services.rsi.wvffle.net/", name = "getEventByIdResponse")
+    public JAXBElement<GetEventByIdResponse> createGetEventByIdResponse(GetEventByIdResponse value) {
+        return new JAXBElement<GetEventByIdResponse>(_GetEventByIdResponse_QNAME, GetEventByIdResponse.class, null, value);
     }
 
     /**
