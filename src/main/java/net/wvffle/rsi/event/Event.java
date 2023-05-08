@@ -2,6 +2,7 @@ package net.wvffle.rsi.event;
 
 import java.util.Date;
 
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -40,7 +41,7 @@ public class Event {
     /**
      * Date of the event
      */
-    @NonNull @DatabaseField(canBeNull = false)
+    @NonNull @DatabaseField(canBeNull = false, dataType = DataType.DATE_LONG)
     private Date date;
 
     /**

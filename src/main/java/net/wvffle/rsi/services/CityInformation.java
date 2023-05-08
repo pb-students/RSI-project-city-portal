@@ -2,9 +2,8 @@ package net.wvffle.rsi.services;
 
 import java.io.ByteArrayOutputStream;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.jws.WebMethod;
@@ -13,6 +12,9 @@ import javax.jws.WebService;
 import javax.xml.ws.BindingType;
 import javax.xml.ws.soap.MTOM;
 import javax.xml.ws.soap.SOAPBinding;
+
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeConstants;
 
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
@@ -105,12 +107,34 @@ public class CityInformation {
     }
 
     /**
+     * Get an event by id
+     * @param id is the id of the event
+     * @return the event
+     */
+    public Event getEventById(@WebParam(name="id") long id) throws SQLException {
+        return eventDao.queryForId(id);
+    }
+
+    /**
      * Get all events sorted by date
      * @return all events
      */
     @WebMethod
     public List<Event> getAllEvents() throws SQLException {
-        return eventDao.queryBuilder().orderBy("date", false).query();
+        return eventDao.queryBuilder()
+        .orderBy("date", false)
+        .query();
+    }
+
+    /**
+     * Get paginated events
+     */
+    public List<Event> getPaginatedEvents(@WebParam(name="page") long page) throws SQLException {
+        return eventDao.queryBuilder()
+          .orderBy("date", false)
+          .limit(10L)
+          .offset((page - 1) * 10)
+          .query();
     }
 
     /**
@@ -122,12 +146,18 @@ public class CityInformation {
     }
 
     /**
-     * Get all events for a specific month
+     * Get all events for a specific week
      */
     @WebMethod
-    public List<Event> getEventsForMonth(@WebParam(name="date") Date date) throws SQLException {
-        // TODO (siwykot41): Dodaj logike, uzywamy ORMLite
-        return eventDao.queryBuilder().query();
+    public List<Event> getEventsForWeek(@WebParam(name="date") Date date) throws SQLException {
+        Date from = new DateTime(date).withDayOfWeek(DateTimeConstants.MONDAY).toDate();
+        Date to = new DateTime(date).withDayOfWeek(DateTimeConstants.SUNDAY).toDate();
+
+        return eventDao.queryBuilder()
+            .orderBy("date", false)
+            .where()
+            .between("date", from, to)
+            .query();
     }
 
     /**
