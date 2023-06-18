@@ -1,5 +1,10 @@
 <script setup lang="ts">
-const { data: events } = await useFetch('/api/events')
+const { data: events } = await useFetch('/api/events', {
+  baseURL: 'https://wsdl--main--project-rsi--siwykot41.code.wvffle.net/RSI',
+  default: () => []
+})
+
+console.log(events.value)
 </script>
 
 <template>

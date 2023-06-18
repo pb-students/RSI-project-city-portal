@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { EventInfo } from "~/types";
-import dateFormat from 'dateformat'
 defineProps<{
   event: EventInfo;
 }>();
@@ -10,7 +9,7 @@ defineProps<{
   <NuxtLink :to="`/events/${event.id}`" class="block p-2 mb-2 text-3xl group">
     <div class="aspect-3/1 relative rounded-lg overflow-hidden group-hover:shadow-lg">
       <div class="absolute inset-0 w-full h-full z-2 text-shadow-lg">
-        <h3 class="text-4xl absolute top-4 right-5 text-white">{{ dateFormat(event.date, 'dd') }}</h3>
+        <h3 class="text-4xl absolute top-4 right-5 text-white">{{  dateFormat(event.date, 'dd') }}</h3>
         <h3 class="text-4xl absolute top-11 right-5 text-white">{{ dateFormat(event.date, 'mm') }}</h3>
         <h3 class="text-4xl absolute top-18 right-5 text-white">{{ dateFormat(event.date, 'yy') }}</h3>
       </div>

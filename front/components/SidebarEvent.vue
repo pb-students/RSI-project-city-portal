@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { EventInfo } from "~/types";
-import dateFormat from 'dateformat'
 defineProps<{
   event: EventInfo;
 }>();

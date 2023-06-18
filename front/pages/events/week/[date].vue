@@ -1,6 +1,9 @@
 <script setup lang="ts">
 const { params } = useRoute()
-const { data: events } = await useFetch(`/api/events/by/week/${params.date}`)
+const { data: events } = await useFetch(`/api/events/by/week/${params.date}`, {
+  baseURL: 'https://wsdl--main--project-rsi--siwykot41.code.wvffle.net/RSI',
+  default: () => []
+})
 
 const date = ref(params.date)
 </script>

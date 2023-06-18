@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import type { EventInfo } from "~/types";
-import dateFormat from 'dateformat'
 const props = defineProps<{
-  event: EventInfo | undefined;
+  event?: EventInfo | undefined;
 }>();
 
 const data = ref({
@@ -26,8 +25,12 @@ const save = async () => {
     : '/api/events',
     {
       method: 'post',
-      body: data.value
-    }
+      body: {
+        ...data.value,
+        date: new Date(data.value.date).toISOString()
+      },
+      baseURL: 'https://wsdl--main--project-rsi--siwykot41.code.wvffle.net/RSI'
+    }, 
   )
 
   return useRouter().push(`/events/${id}`)

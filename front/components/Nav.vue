@@ -12,7 +12,9 @@ const NuxtLink = resolveComponent('NuxtLink')
 const downloadPdf = async () => {
   const downloadLink = document.createElement("a");
   const fileName = "wydarzenia.pdf";
-  downloadLink.href = await $fetch('/api/pdf');
+  downloadLink.href = URL.createObjectURL(await $fetch('/api/pdf', {
+    baseURL: 'https://wsdl--main--project-rsi--siwykot41.code.wvffle.net/RSI'
+  }))
   downloadLink.download = fileName;
   downloadLink.click();
 }

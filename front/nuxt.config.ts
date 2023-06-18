@@ -11,4 +11,7 @@ export default defineNuxtConfig({
     "@fontsource/lato/900.css",
     "@formkit/themes/genesis",
   ],
+
+  // Enable devtools
+  devtools: true,
 });
