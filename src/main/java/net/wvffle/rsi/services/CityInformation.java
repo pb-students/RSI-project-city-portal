@@ -13,6 +13,8 @@ import com.j256.ormlite.jdbc.JdbcPooledConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import java.io.ByteArrayOutputStream;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.ws.rs.Consumes;
@@ -29,7 +31,7 @@ import net.wvffle.rsi.event.Event;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeConstants;
 
-@Path("/api")
+@Path("/")
 @BindingType(value = SOAPBinding.SOAP11HTTP_BINDING)
 public class CityInformation {
 
@@ -142,26 +144,30 @@ public class CityInformation {
                 .offset((page - 1) * 10)
                 .query();
     }
-
+    
     /**
      * Get all events for a specific day
+     * @throws ParseException
      */
     @GET
     @Path("/events/by/day/{date}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Event> getEventsForDay(@PathParam("date") Date date)
-            throws SQLException {
-        return eventDao.queryBuilder().where().eq("date", date).query();
+    public List<Event> getEventsForDay(@PathParam("date") String date)
+            throws SQLException, ParseException {
+
+        Date day = new DateTime(date).toDate();
+        return eventDao.queryBuilder().where().eq("date", day).query();
     }
 
     /**
      * Get all events for a specific week
+     * @throws ParseException
      */
     @GET
     @Path("/events/by/week/{date}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Event> getEventsForWeek(@PathParam("date") Date date)
-            throws SQLException {
+    public List<Event> getEventsForWeek(@PathParam("date") String date)
+            throws SQLException, ParseException {
         Date from = new DateTime(date).withDayOfWeek(DateTimeConstants.MONDAY).toDate();
         Date to = new DateTime(date).withDayOfWeek(DateTimeConstants.SUNDAY).toDate();
 
