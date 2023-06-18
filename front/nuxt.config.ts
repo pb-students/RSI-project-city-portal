@@ -1,6 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ["@unocss/nuxt", "@formkit/nuxt"],
+  modules: [
+    "@unocss/nuxt",
+    "@formkit/nuxt",
+    "@pinia/nuxt",
+    "@vueuse/nuxt"
+  ],
 
   css: [
     "@unocss/reset/tailwind.css",
@@ -14,4 +19,15 @@ export default defineNuxtConfig({
 
   // Enable devtools
   devtools: true,
+
+  pinia: {
+    // Auto imports
+    autoImports: [
+      ['defineStore', 'definePiniaStore']
+    ]
+  },
+
+  imports: {
+    dirs: ['stores'],
+  }
 });

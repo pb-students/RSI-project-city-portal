@@ -18,6 +18,8 @@ const downloadPdf = async () => {
   downloadLink.download = fileName;
   downloadLink.click();
 }
+
+const auth = useAuthStore()
 </script>
 
 <template>
@@ -41,7 +43,7 @@ const downloadPdf = async () => {
             </NuxtLink>
           </div>
         </div>
-        <div class="hidden sm:ml-6 sm:flex sm:items-center">
+        <div v-if="auth.isAuthenticated" class="hidden sm:ml-6 sm:flex sm:items-center">
           <!-- Profile dropdown -->
           <Menu as="div" class="relative ml-3">
             <div>
@@ -63,13 +65,22 @@ const downloadPdf = async () => {
                   </a>
                 </MenuItem>
                 <MenuItem v-slot="{ active }">
-                  <a href="#" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">
+                  <a @click.stop.prevent="auth.logout" href="#" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">
                     Wyloguj
                   </a>
                 </MenuItem>
               </MenuItems>
             </transition>
           </Menu>
+        </div>
+        <div v-else class="hidden sm:ml-6 sm:flex sm:space-x-8">
+            <NuxtLink 
+              to="/login"
+              class="inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700"
+              active-class="!border-pink-500 !text-gray-900"
+            >
+              Zaloguj się
+            </NuxtLink>
         </div>
         <div class="-mr-2 flex items-center sm:hidden">
           <!-- Mobile menu button -->
@@ -95,7 +106,7 @@ const downloadPdf = async () => {
           {{ link.title }}
         </DisclosureButton>
       </div>
-      <div class="border-t border-gray-200 pb-3 pt-4">
+      <div v-if="auth.isAuthenticated" class="border-t border-gray-200 pb-3 pt-4">
         <div class="flex items-center px-4">
           <div class="flex-shrink-0">
             <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
@@ -108,7 +119,12 @@ const downloadPdf = async () => {
         <div class="mt-3 space-y-1">
           <DisclosureButton :as="NuxtLink" to="/events/new" class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800">Dodaj</DisclosureButton>
           <DisclosureButton as="a" @click="downloadPdf" href="#" class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800">Pobierz PDF</DisclosureButton>
-          <DisclosureButton as="a" href="#" class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800">Wyloguj</DisclosureButton>
+          <DisclosureButton @click.stop.prevent="auth.logout" as="a" href="#" class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800">Wyloguj</DisclosureButton>
+        </div>
+      </div>
+      <div v-else class="border-t border-gray-200 pb-3 pt-4">
+        <div class="mt-3 space-y-1">
+          <DisclosureButton :as="NuxtLink" to="/login" class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800">Zaloguj się</DisclosureButton>
         </div>
       </div>
     </DisclosurePanel>
