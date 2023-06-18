@@ -1,4 +1,0 @@
-
-/** getEventsByWeek */
-export interface GetEventsByWeek {
-}

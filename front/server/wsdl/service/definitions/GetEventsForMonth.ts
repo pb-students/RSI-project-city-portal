@@ -1,4 +1,0 @@
-
-/** getEventsForMonth */
-export interface GetEventsForMonth {
-}

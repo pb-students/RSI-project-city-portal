@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.wvffle</groupId>
@@ -38,9 +38,9 @@
             <version>7.0</version>
         </dependency>
         <dependency>
-          <groupId>org.xerial</groupId>
-          <artifactId>sqlite-jdbc</artifactId>
-          <version>3.41.2.1</version>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.41.2.1</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -59,6 +59,43 @@
             <artifactId>lombok</artifactId>
             <version>1.18.26</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>8.0.1</version>
+        </dependency>
+
+        <!-- XmlRootElement -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+
+        <!-- jersey client builder -->
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>2.33</version>
+        </dependency>
+        <!-- injectionmanagerfactory -->
+        <dependency>
+            <groupId>org.glassfish.jersey.inject</groupId>
+            <artifactId>jersey-hk2</artifactId>
+            <version>2.33</version>
+        </dependency>
+        <!-- messagebodywriter -->
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-jackson</artifactId>
+            <version>2.33</version>
+        </dependency>
+        <!-- jersey -->
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-servlet</artifactId>
+            <version>2.33</version>
         </dependency>
     </dependencies>
 
@@ -79,6 +116,30 @@
                 <version>3.2.3</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <id>deploy</id>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <executable>/glassfish5/bin/asadmin</executable>
+                    <arguments>
+                        <argument>deploy</argument>
+                        <argument>--force=true</argument>
+                        <argument>--contextroot=${project.name}</argument>
+                        <argument>--name=${project.name}</argument>
+                        <argument>${project.build.directory}/${project.build.finalName}.war</argument>
+                    </arguments>
                 </configuration>
             </plugin>
         </plugins>

@@ -1,4 +1,0 @@
-
-/** modifyEventDescription */
-export interface ModifyEventDescription {
-}

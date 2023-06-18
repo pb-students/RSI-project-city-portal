@@ -1,4 +1,0 @@
-
-/** getEvents */
-export interface GetEvents {
-}

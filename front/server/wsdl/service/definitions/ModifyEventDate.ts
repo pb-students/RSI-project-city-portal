@@ -1,4 +1,0 @@
-
-/** modifyEventDate */
-export interface ModifyEventDate {
-}
