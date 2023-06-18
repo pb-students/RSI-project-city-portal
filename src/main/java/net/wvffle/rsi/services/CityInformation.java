@@ -1,14 +1,19 @@
 package net.wvffle.rsi.services;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
+import javax.xml.bind.annotation.XmlMimeType;
 import javax.xml.ws.BindingType;
 import javax.xml.ws.soap.MTOM;
 import javax.xml.ws.soap.SOAPBinding;
@@ -23,6 +28,7 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.codec.Base64.OutputStream;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcPooledConnectionSource;
@@ -163,9 +169,11 @@ public class CityInformation {
     /**
      * Generates pdf and inserts all the events into the table 
      * @return pdf as byte array
+     * @throws IOException
      */
     @WebMethod                                                          
-    public byte[] generatePdf() throws DocumentException {
+    @XmlMimeType("application/octet-stream")
+    public DataHandler generatePdf() throws DocumentException, IOException {
         Document document = new Document();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PdfWriter.getInstance(document, baos);
@@ -177,7 +185,11 @@ public class CityInformation {
 
         document.add(table);
         document.close();
-        return baos.toByteArray();
+
+        FileOutputStream out = new FileOutputStream("/tmp/out.pdf");
+        out.write(baos.toByteArray());
+
+        return new DataHandler(new FileDataSource("/tmp/out.pdf"));
     }
    
     private void addTableHeader(PdfPTable table) {

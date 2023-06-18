@@ -37,15 +37,15 @@ fi
 # Fetch WSDL file
 wget "https://$wsdl_subdomain.code.wvffle.net/RSI/${SERVICE}Service?wsdl" -O - | sed -E 's#http://'$wsdl_subdomain'.code.wvffle.net:80#https://'$wsdl_subdomain'.code.wvffle.net#g' >src/main/resources/service.wsdl
 
-# Generate client source files
-mkdir -p "src/main/java/$package_dir/client/generated"
-if ! wsimport -J-Djavax.xml.accessExternalSchema=all src/main/resources/service.wsdl -keep -p $PACKAGE.client.generated -d src/main/java -wsdllocation /service.wsdl; then
-	echo "Failed to generate client source files, check logs for details"
-	exit 1
-fi
+# # Generate client source files
+# mkdir -p "src/main/java/$package_dir/client/generated"
+# if ! wsimport -J-Djavax.xml.accessExternalSchema=all src/main/resources/service.wsdl -keep -p $PACKAGE.client.generated -d src/main/java -wsdllocation /service.wsdl; then
+# 	echo "Failed to generate client source files, check logs for details"
+# 	exit 1
+# fi
 
-# Generate client Jar file
-if ! ./mvnw install; then
-	echo "Failed to build client jar file, check logs for details"
-	exit 1
-fi
+# # Generate client Jar file
+# if ! ./mvnw install; then
+# 	echo "Failed to build client jar file, check logs for details"
+# 	exit 1
+# fi

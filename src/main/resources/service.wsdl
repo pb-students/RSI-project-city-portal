@@ -16,11 +16,11 @@
 <message name="SQLException">
 <part name="fault" element="tns:SQLException"/>
 </message>
-<message name="getEventById">
-<part name="parameters" element="tns:getEventById"/>
+<message name="addEvent">
+<part name="parameters" element="tns:addEvent"/>
 </message>
-<message name="getEventByIdResponse">
-<part name="parameters" element="tns:getEventByIdResponse"/>
+<message name="addEventResponse">
+<part name="parameters" element="tns:addEventResponse"/>
 </message>
 <message name="generatePdf">
 <part name="parameters" element="tns:generatePdf"/>
@@ -31,11 +31,14 @@
 <message name="DocumentException">
 <part name="fault" element="tns:DocumentException"/>
 </message>
-<message name="addEvent">
-<part name="parameters" element="tns:addEvent"/>
+<message name="IOException">
+<part name="fault" element="tns:IOException"/>
 </message>
-<message name="addEventResponse">
-<part name="parameters" element="tns:addEventResponse"/>
+<message name="getEventById">
+<part name="parameters" element="tns:getEventById"/>
+</message>
+<message name="getEventByIdResponse">
+<part name="parameters" element="tns:getEventByIdResponse"/>
 </message>
 <message name="updateEvent">
 <part name="parameters" element="tns:updateEvent"/>
@@ -73,20 +76,21 @@
 <output wsam:Action="http://services.rsi.wvffle.net/CityInformation/getPaginatedEventsResponse" message="tns:getPaginatedEventsResponse"/>
 <fault message="tns:SQLException" name="SQLException" wsam:Action="http://services.rsi.wvffle.net/CityInformation/getPaginatedEvents/Fault/SQLException"/>
 </operation>
-<operation name="getEventById">
-<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventByIdRequest" message="tns:getEventById"/>
-<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventByIdResponse" message="tns:getEventByIdResponse"/>
-<fault message="tns:SQLException" name="SQLException" wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventById/Fault/SQLException"/>
+<operation name="addEvent">
+<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/addEventRequest" message="tns:addEvent"/>
+<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/addEventResponse" message="tns:addEventResponse"/>
+<fault message="tns:SQLException" name="SQLException" wsam:Action="http://services.rsi.wvffle.net/CityInformation/addEvent/Fault/SQLException"/>
 </operation>
 <operation name="generatePdf">
 <input wsam:Action="http://services.rsi.wvffle.net/CityInformation/generatePdfRequest" message="tns:generatePdf"/>
 <output wsam:Action="http://services.rsi.wvffle.net/CityInformation/generatePdfResponse" message="tns:generatePdfResponse"/>
 <fault message="tns:DocumentException" name="DocumentException" wsam:Action="http://services.rsi.wvffle.net/CityInformation/generatePdf/Fault/DocumentException"/>
+<fault message="tns:IOException" name="IOException" wsam:Action="http://services.rsi.wvffle.net/CityInformation/generatePdf/Fault/IOException"/>
 </operation>
-<operation name="addEvent">
-<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/addEventRequest" message="tns:addEvent"/>
-<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/addEventResponse" message="tns:addEventResponse"/>
-<fault message="tns:SQLException" name="SQLException" wsam:Action="http://services.rsi.wvffle.net/CityInformation/addEvent/Fault/SQLException"/>
+<operation name="getEventById">
+<input wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventByIdRequest" message="tns:getEventById"/>
+<output wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventByIdResponse" message="tns:getEventByIdResponse"/>
+<fault message="tns:SQLException" name="SQLException" wsam:Action="http://services.rsi.wvffle.net/CityInformation/getEventById/Fault/SQLException"/>
 </operation>
 <operation name="updateEvent">
 <input wsam:Action="http://services.rsi.wvffle.net/CityInformation/updateEventRequest" message="tns:updateEvent"/>
@@ -129,7 +133,7 @@
 <soap:fault name="SQLException" use="literal"/>
 </fault>
 </operation>
-<operation name="getEventById">
+<operation name="addEvent">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -152,8 +156,11 @@
 <fault name="DocumentException">
 <soap:fault name="DocumentException" use="literal"/>
 </fault>
+<fault name="IOException">
+<soap:fault name="IOException" use="literal"/>
+</fault>
 </operation>
-<operation name="addEvent">
+<operation name="getEventById">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
