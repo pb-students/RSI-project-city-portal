@@ -49,6 +49,12 @@ public class CityInformation {
         }
     }
 
+    @POST
+    @Path("/auth/verify")
+    public String verifyLogin() {
+        return "OK";
+    }
+
     /**
      * Create new event
      *
